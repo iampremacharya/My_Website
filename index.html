@@ -173,6 +173,41 @@ nav a:hover { color: var(--neon-blue); }
 
 /* ===== FOOTER ===== */
 footer { text-align:center; padding:2rem; background:#050813; color:#9ca3af; font-size:0.9rem; }
+/* Hamburger button hidden on desktop */
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger div { width: 25px; height: 3px; background: var(--text-light); border-radius: 2px; transition: all 0.3s; }
+
+/* Sidebar hidden initially */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background: rgba(17,22,42,0.95);
+  backdrop-filter: blur(15px);
+  display: flex;
+  flex-direction: column;
+  padding-top: 4rem;
+  gap: 2rem;
+  transition: left 0.3s ease;
+  z-index: 999;
+}
+.sidebar a { color: var(--text-light); text-decoration: none; padding: 0.8rem 2rem; font-size: 1.2rem; }
+.sidebar a:hover { color: var(--neon-blue); }
+
+/* Sidebar active */
+.sidebar.active { left: 0; }
+
+/* Mobile styles */
+@media(max-width:768px){
+  nav .nav-links { display: none; } /* hide desktop nav links */
+  .hamburger { display: flex; }    /* show hamburger on mobile */
+}
+.hamburger.active div:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active div:nth-child(2) { opacity: 0; }
+.hamburger.active div:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
 </style>
 </head>
 <body>
@@ -182,14 +217,27 @@ footer { text-align:center; padding:2rem; background:#050813; color:#9ca3af; fon
 
 <nav>
   <h1>Prem Acharya</h1>
-  <div>
+  <div class="nav-links">
     <a href="#">Home</a>
     <a href="#about-me">About Me</a>
     <a href="#poems">Poems</a>
     <a href="#contact">Contacts</a>
     <a href="explore.html">Explore</a>
   </div>
+  <div class="hamburger" id="hamburger">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 </nav>
+<div class="sidebar" id="sidebar">
+  <a href="#">Home</a>
+  <a href="#about-me">About Me</a>
+  <a href="#poems">Poems</a>
+  <a href="#contact">Contacts</a>
+  <a href="explore.html">Explore</a>
+</div>
+
 
 <section class="hero">
   <div>
@@ -440,6 +488,16 @@ function revealAboutMe() {
 
 window.addEventListener('scroll', revealAboutMe);
 window.addEventListener('load', revealAboutMe);
+
+const hamburger = document.getElementById('hamburger');
+const sidebar = document.getElementById('sidebar');
+
+hamburger.addEventListener('click', () => {
+  sidebar.classList.toggle('active');
+  // Animate hamburger into X
+  hamburger.classList.toggle('active');
+});
+
 </script>
 
 </body>
