@@ -280,6 +280,7 @@ footer { text-align:center; padding:2rem; background:#050813; color:#9ca3af; fon
 
 
 
+
 <section class="hero">
 <div><h2>FUTURE BEGINS HERE</h2><p>Innovation • Engineering • Youth</p><button class="btn" id="openModalBtn">Register Now</button></div>
 </section>
@@ -566,92 +567,91 @@ hamburger.addEventListener('click', () => {
 
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.32.0/dist/supabase.min.js"></script>
-
 <script>
-  // ===== Modal Open & Close =====
+document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('registerModal');
   const openBtn = document.getElementById('openModalBtn');
   const closeBtn = document.getElementById('closeModal');
 
   openBtn.addEventListener('click', () => {
-      modal.style.display = 'flex';
+    modal.style.display = 'flex';
   });
 
   closeBtn.addEventListener('click', () => {
-      modal.style.display = 'none';
+    modal.style.display = 'none';
   });
 
   window.addEventListener('click', (e) => {
-      if (e.target == modal) {
-          modal.style.display = 'none';
-      }
-  });
-
-  // ===== Supabase Registration =====
-  const supabaseUrl = "https://jbbfsyyvwqnmkeqpsxyb.supabase.co"; // replace
-  const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpiYmZzeXl2d3FubWtlcXBzeHliIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk2ODY3MzYsImV4cCI6MjA4NTI2MjczNn0.01zWZRgFBh4B1_Z94n1ytz8FRXEHbnHrt3-uY77r0Bs"; // replace with anon key
-  const supabase = Supabase.createClient(supabaseUrl, supabaseKey);
-
-  const form = document.getElementById('registerForm');
-  const messageEl = document.getElementById('registerMessage');
-
-  form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const name = form.name.value.trim();
-      const email = form.email.value.trim();
-      const password = form.password.value;
-      messageEl.textContent = "Registering...";
-
-      try {
-          const { data, error } = await supabase.auth.signUp({
-              email: email,
-              password: password,
-              options: { data: { full_name: name } }
-          });
-
-          if(error) {
-              messageEl.textContent = "Error: " + error.message;
-          } else {
-              messageEl.textContent = "Registration successful! Check your email.";
-              form.reset();
-          }
-      } catch(err) {
-          messageEl.textContent = "Something went wrong: " + err.message;
-      }
-  });
-</script>
-
-<script>
-const feedbackForm = document.getElementById('feedbackForm');
-const feedbackMessage = document.getElementById('feedbackMessage');
-
-feedbackForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  const name = feedbackForm.name.value.trim();
-  const email = feedbackForm.email.value.trim();
-  const message = feedbackForm.message.value.trim();
-
-  feedbackMessage.textContent = "Submitting...";
-
-  try {
-    const { data, error } = await supabase
-      .from('feedback') // make sure you create a 'feedback' table in Supabase
-      .insert([{ name, email, message }]);
-
-    if(error){
-      feedbackMessage.textContent = "Error: " + error.message;
-    } else {
-      feedbackMessage.textContent = "Thank you for your feedback!";
-      feedbackForm.reset();
+    if (e.target === modal) {
+      modal.style.display = 'none';
     }
-  } catch(err) {
-    feedbackMessage.textContent = "Something went wrong: " + err.message;
-  }
+  });
 });
 </script>
 
+
+<script type="module">
+  import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
+  const supabase = createClient(
+    "https://jbbfsyyvwqnmkeqpsxyb.supabase.co",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpiYmZzeXl2d3FubWtlcXBzeHliIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk2ODY3MzYsImV4cCI6MjA4NTI2MjczNn0.01zWZRgFBh4B1_Z94n1ytz8FRXEHbnHrt3-uY77r0Bs"
+  );
+
+  /* ===== REGISTER ===== */
+  const registerForm = document.getElementById('registerForm');
+  const registerMessage = document.getElementById('registerMessage');
+
+  registerForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = registerForm.name.value.trim();
+    const email = registerForm.email.value.trim();
+    const password = registerForm.password.value;
+
+    registerMessage.textContent = "Registering...";
+
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: { full_name: name }
+      }
+    });
+
+    if (error) {
+      registerMessage.textContent = error.message;
+    } else {
+      registerMessage.textContent = "✅ Check your email to confirm!";
+      registerForm.reset();
+    }
+  });
+
+  /* ===== FEEDBACK ===== */
+  const feedbackForm = document.getElementById('feedbackForm');
+  const feedbackMessage = document.getElementById('feedbackMessage');
+
+  feedbackForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = feedbackForm.name.value.trim();
+    const email = feedbackForm.email.value.trim();
+    const message = feedbackForm.message.value.trim();
+
+    feedbackMessage.textContent = "Submitting...";
+
+    const { error } = await supabase
+      .from('feedback')
+      .insert([{ name, email, message }]);
+
+    if (error) {
+      feedbackMessage.textContent = error.message;
+    } else {
+      feedbackMessage.textContent = "✅ Thank you for your feedback!";
+      feedbackForm.reset();
+    }
+  });
+</script>
 
 </body>
 </html>
