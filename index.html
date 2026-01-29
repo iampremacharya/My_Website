@@ -207,6 +207,25 @@ footer { text-align:center; padding:2rem; background:#050813; color:#9ca3af; fon
 .hamburger.active div:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
 .hamburger.active div:nth-child(2) { opacity: 0; }
 .hamburger.active div:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+/* ===== Modal Styles ===== */
+.modal {
+  display: none; 
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:200;
+}
+.modal-content {
+  background: var(--card-dark); padding: 40px; border-radius: 20px;
+  max-width: 400px; width: 90%; text-align:center; color:#fff; position:relative;
+}
+.close-btn {
+  position:absolute; top:15px; right:20px; font-size:1.5rem; cursor:pointer; color:#fff;
+}
+.modal input {
+  width:100%; padding:12px; margin:10px 0; border-radius:8px; border:none; font-size:1rem;
+}
+.modal button { margin-top:10px; width:100%; }
+#registerMessage { margin-top:15px; font-size:0.95rem; }
+
 
 </style>
 </head>
@@ -239,12 +258,9 @@ footer { text-align:center; padding:2rem; background:#050813; color:#9ca3af; fon
 </div>
 
 
+
 <section class="hero">
-  <div>
-    <h2>FUTURE BEGINS HERE</h2>
-    <p>Innovation • Engineering • Youth</p>
-    <button class="btn">Register Now</button>
-  </div>
+<div><h2>FUTURE BEGINS HERE</h2><p>Innovation • Engineering • Youth</p><button class="btn" id="openModalBtn">Register Now</button></div>
 </section>
 
 <!-- ===== About Me Section ===== -->
@@ -426,6 +442,20 @@ Fresh insights blossomed, shaping.</p></div>
 </section>
 
 <footer>© 2026 Prem Acharya</footer>
+<!-- ===== Register Modal ===== -->
+<div id="registerModal" class="modal">
+<div class="modal-content">
+<span class="close-btn" id="closeModal">&times;</span>
+<h2>Register Now</h2>
+<form id="registerForm">
+<input type="text" name="name" placeholder="Full Name" required>
+<input type="email" name="email" placeholder="Email" required>
+<input type="password" name="password" placeholder="Password" required>
+<button type="submit" class="btn">Register</button>
+<p id="registerMessage"></p>
+</form>
+</div>
+</div>
 
 <!-- ===== Scripts ===== -->
 <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
@@ -498,6 +528,42 @@ hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('active');
 });
 
+
+</script>
+
+<!-- Supabase JS -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script>
+const supabaseUrl = 'https://jbbfsyyvwqnmkeqpsxyb.supabase.co'; // replace
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpiYmZzeXl2d3FubWtlcXBzeHliIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk2ODY3MzYsImV4cCI6MjA4NTI2MjczNn0.01zWZRgFBh4B1_Z94n1ytz8FRXEHbnHrt3-uY77r0Bs'; // replace
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+</script>
+<script>
+const modal=document.getElementById('registerModal');document.getElementById('openModalBtn').onclick=()=>{modal.style.display='flex';};document.getElementById('closeModal').onclick=()=>{modal.style.display='none';};
+window.onclick=e=>{if(e.target==modal){modal.style.display='none';}};
+</script>
+<script>
+// Register form submit
+const registerForm = document.getElementById('registerForm');
+const message = document.getElementById('registerMessage');
+
+registerForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const name = registerForm.name.value;
+  const email = registerForm.email.value;
+  const password = registerForm.password.value;
+
+  const { data, error } = await supabase.auth.signUp({ email, password }, { data: { full_name: name } });
+  
+  if(error){
+    message.textContent = error.message;
+    message.style.color='red';
+  } else {
+    message.textContent = 'Registration successful! Check your email to confirm.';
+    message.style.color='lime';
+    registerForm.reset();
+  }
+});
 </script>
 
 </body>
