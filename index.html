@@ -534,48 +534,55 @@ hamburger.addEventListener('click', () => {
 <!-- Supabase JS -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.32.0/dist/supabase.min.js"></script>
 <script>
-const supabaseUrl = 'https://jbbfsyyvwqnmkeqpsxyb.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpiYmZzeXl2d3FubWtlcXBzeHliIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk2ODY3MzYsImV4cCI6MjA4NTI2MjczNn0.01zWZRgFBh4B1_Z94n1ytz8FRXEHbnHrt3-uY77r0Bs';
-const supabase = supabase.createClient(supabaseUrl, supabaseKey);
-
+  // Initialize Supabase with your project URL and ANON key
+  const supabaseUrl = "https://jbbfsyyvwqnmkeqpsxyb.supabase.co"; // replace with your Supabase URL
+  const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpiYmZzeXl2d3FubWtlcXBzeHliIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk2ODY3MzYsImV4cCI6MjA4NTI2MjczNn0.01zWZRgFBh4B1_Z94n1ytz8FRXEHbnHrt3-uY77r0Bs"; // replace with your ANON (public) key
+  const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 </script>
 <script>
-// Modal open/close
-const modal = document.getElementById('registerModal');
-document.getElementById('openModalBtn').onclick = () => { modal.style.display = 'flex'; };
-document.getElementById('closeModal').onclick = () => { modal.style.display = 'none'; };
-window.onclick = e => { if(e.target == modal){ modal.style.display = 'none'; } };
+  // Modal open/close
+  const modal = document.getElementById('registerModal');
+  document.getElementById('openModalBtn').onclick = () => { modal.style.display = 'flex'; };
+  document.getElementById('closeModal').onclick = () => { modal.style.display = 'none'; };
+  window.onclick = e => { if(e.target == modal) modal.style.display = 'none'; };
 
-// Register form submit
-document.getElementById('registerForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
+  // Register form submit
+  document.getElementById('registerForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
 
-    const name = this.name.value;
-    const email = this.email.value;
-    const password = this.password.value;
-    const messageEl = document.getElementById('registerMessage');
+      const name = this.name.value.trim();
+      const email = this.email.value.trim();
+      const password = this.password.value;
+      const messageEl = document.getElementById('registerMessage');
 
-    messageEl.textContent = "Registering...";
+      if(!name || !email || !password){
+          messageEl.textContent = "Please fill all fields.";
+          return;
+      }
 
-    try {
-        const { data, error } = await supabase.auth.signUp({
-            email: email,
-            password: password,
-            options: { data: { full_name: name } }
-        });
+      messageEl.textContent = "Registering...";
 
-        if (error) {
-            messageEl.textContent = "Error: " + error.message;
-        } else {
-            messageEl.textContent = "Registration successful! Check your email to confirm.";
-            this.reset();
-            setTimeout(() => { modal.style.display = 'none'; }, 3000);
-        }
-    } catch (err) {
-        messageEl.textContent = "Something went wrong: " + err.message;
-    }
-});
+      try {
+          const { data, error } = await supabase.auth.signUp({
+              email: email,
+              password: password,
+              options: {
+                  data: { full_name: name }
+              }
+          });
+
+          if (error) {
+              messageEl.textContent = "Error: " + error.message;
+          } else {
+              messageEl.textContent = "Registration successful! Check your email to confirm.";
+              this.reset();
+          }
+      } catch (err) {
+          messageEl.textContent = "Something went wrong: " + err.message;
+      }
+  });
 </script>
+
 
 
 </body>
