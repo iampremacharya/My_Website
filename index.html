@@ -534,17 +534,18 @@ hamburger.addEventListener('click', () => {
 <!-- Supabase JS -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.32.0/dist/supabase.min.js"></script>
 <script>
-const supabaseUrl = 'https://jbbfsyyvwqnmkeqpsxyb.supabase.co'; // replace
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpiYmZzeXl2d3FubWtlcXBzeHliIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk2ODY3MzYsImV4cCI6MjA4NTI2MjczNn0.01zWZRgFBh4B1_Z94n1ytz8FRXEHbnHrt3-uY77r0Bs'; // replace
+const supabaseUrl = 'https://jbbfsyyvwqnmkeqpsxyb.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpiYmZzeXl2d3FubWtlcXBzeHliIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk2ODY3MzYsImV4cCI6MjA4NTI2MjczNn0.01zWZRgFBh4B1_Z94n1ytz8FRXEHbnHrt3-uY77r0Bs';
 const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
+</script>
+<script>
+// Modal open/close
+const modal = document.getElementById('registerModal');
+document.getElementById('openModalBtn').onclick = () => { modal.style.display = 'flex'; };
+document.getElementById('closeModal').onclick = () => { modal.style.display = 'none'; };
+window.onclick = e => { if(e.target == modal){ modal.style.display = 'none'; } };
 
-</script>
-<script>
-const modal=document.getElementById('registerModal');document.getElementById('openModalBtn').onclick=()=>{modal.style.display='flex';};document.getElementById('closeModal').onclick=()=>{modal.style.display='none';};
-window.onclick=e=>{if(e.target==modal){modal.style.display='none';}};
-</script>
-<script>
 // Register form submit
 document.getElementById('registerForm').addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -560,9 +561,7 @@ document.getElementById('registerForm').addEventListener('submit', async functio
         const { data, error } = await supabase.auth.signUp({
             email: email,
             password: password,
-            options: {
-                data: { full_name: name }
-            }
+            options: { data: { full_name: name } }
         });
 
         if (error) {
@@ -570,13 +569,14 @@ document.getElementById('registerForm').addEventListener('submit', async functio
         } else {
             messageEl.textContent = "Registration successful! Check your email to confirm.";
             this.reset();
+            setTimeout(() => { modal.style.display = 'none'; }, 3000);
         }
     } catch (err) {
         messageEl.textContent = "Something went wrong: " + err.message;
     }
 });
-
 </script>
+
 
 </body>
 </html>
