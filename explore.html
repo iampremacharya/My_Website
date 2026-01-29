@@ -3,127 +3,89 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fullscreen Hero Slider</title>
-<style>
-:root {
-  --bg:#06080f;
-  --accent:#7df9ff;
-  --text:#eaeaf0;
-}
-
-* { margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif; }
-body { background:var(--bg); color:var(--text); overflow-x:hidden; }
-
-/* ===== FULLSCREEN HERO SLIDER ===== */
-header { height:100vh; width:100%; position:relative; overflow:hidden; }
-
-.slider { height:100%; width:100%; position:relative; }
-
-.slide {
-  position:absolute; top:0; left:0; width:100%; height:100%;
-  background-size:cover; background-position:center;
-  opacity:0; transition:opacity 1.5s ease-in-out;
-  z-index:0;
-}
-
-.slide.active { opacity:1; z-index:1; }
-
-.overlay {
-  position:absolute; top:0; left:0; width:100%; height:100%;
-  background:rgba(6,8,15,0.6);
-  display:flex; flex-direction:column; justify-content:center; align-items:center;
-  text-align:center; padding:0 20px; z-index:2;
-}
-
-.overlay h1{ font-size:clamp(2.5rem,6vw,4.5rem); line-height:1.1; margin-bottom:20px; }
-.overlay h1 span { color:var(--accent); }
-.overlay p{ font-size:1.2rem; margin-bottom:40px; }
-.overlay a{
-  padding:14px 34px; border:1px solid var(--accent);
-  color:var(--accent); text-decoration:none; transition:.3s;
-}
-.overlay a:hover{ background:var(--accent); color:#000; }
-
-.nav {
-  position:absolute; top:50%; transform:translateY(-50%);
-  font-size:2rem; color:var(--accent); cursor:pointer; user-select:none;
-  padding:10px; z-index:3;
-}
-.nav.left { left:20px; }
-.nav.right { right:20px; }
-
-.scroll{ position:absolute; bottom:30px; font-size:12px; letter-spacing:2px; opacity:.6; animation:float 2s infinite; }
-
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-8px)}
-}
-</style>
+<title>Home</title>
+<link rel="stylesheet" href="explore.css">
 </head>
 
 <body>
 
+<nav class="navbar">
+  <div class="logo">MERP<span>.</span></div>
+
+  <div class="menu-toggle" id="menuToggle">
+    ☰
+  </div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="future.html">Future</a></li>
+    <li><a href="music.html">Music</a></li>
+    <li><a href="ai.html">AI</a></li>
+  </ul>
+</nav>
+
+
 <header>
   <div class="slider">
-    <div class="slide active" style="background-image:url('future.jpg');"></div>
-    <div class="slide" style="background-image:url('music.jpg');"></div>
-    <div class="slide" style="background-image:url('ca.webp');"></div>
+    <div class="slide active" style="background-image:url('future.jpg')"></div>
+    <div class="slide" style="background-image:url('music.jpg')"></div>
+    <div class="slide" style="background-image:url('ca.webp')"></div>
   </div>
 
   <div class="overlay">
-    <h1>Welcome to the <span>Future</span></h1>
-    <p>Explore smooth sliders, modern design, and bold ideas</p>
-    <a href="#">EXPLORE</a>
+    <h1 id="heroTitle">Welcome to the <span>Future</span></h1>
+    <p id="heroText">Explore smooth sliders, modern design, and bold ideas</p>
+    <a id="exploreBtn" href="future.html">EXPLORE</a>
   </div>
 
   <div class="nav left">&#10094;</div>
   <div class="nav right">&#10095;</div>
   <div class="scroll">SCROLL ↓</div>
 </header>
-
-<section style="padding:100px 10%; background:#0b0e1a;">
-  <h2>Next Section</h2>
-  <p>This is where your content starts.</p>
-</section>
-
+<footer>© 2026 Prem Acharya</footer>
 <script>
-const slides = document.querySelectorAll('.slide');
-let current = 0;
-const total = slides.length;
+const slides=document.querySelectorAll('.slide');
+const heroTitle=document.getElementById('heroTitle');
+const heroText=document.getElementById('heroText');
+const exploreBtn=document.getElementById('exploreBtn');
 
-// Function to show a specific slide
-function showSlide(index){
-  slides.forEach(slide => slide.classList.remove('active'));
-  slides[index].classList.add('active');
+let current=0;
+
+const slideData=[
+ {page:'future.html',title:'Welcome to the <span>Future</span>',text:'Explore smooth sliders, modern design, and bold ideas'},
+ {page:'music.html',title:'Feel the <span>Music</span>',text:'Sound, rhythm, and creativity combined'},
+ {page:'ai.html',title:'Driven by <span>AI</span>',text:'Artificial intelligence shaping tomorrow'}
+];
+
+function showSlide(i){
+ slides.forEach(s=>s.classList.remove('active'));
+ slides[i].classList.add('active');
+ heroTitle.innerHTML=slideData[i].title;
+ heroText.textContent=slideData[i].text;
+ exploreBtn.href=slideData[i].page;
 }
 
-// Auto-slide every 3 seconds
-let slideInterval = setInterval(nextSlide, 3000);
+function next(){ current=(current+1)%slides.length; showSlide(current); }
+function prev(){ current=(current-1+slides.length)%slides.length; showSlide(current); }
 
-function nextSlide(){
-  current = (current + 1) % total;
-  showSlide(current);
+let interval=setInterval(next,3000);
+
+document.querySelector('.nav.right').onclick=()=>{ next(); reset(); };
+document.querySelector('.nav.left').onclick=()=>{ prev(); reset(); };
+
+function reset(){
+ clearInterval(interval);
+ interval=setInterval(next,5000);
 }
+</script>
+<script>
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
 
-function prevSlide(){
-  current = (current - 1 + total) % total;
-  showSlide(current);
-}
-
-// Arrow navigation
-document.querySelector('.nav.left').addEventListener('click', ()=>{
-  prevSlide();
-  resetInterval();
-});
-document.querySelector('.nav.right').addEventListener('click', ()=>{
-  nextSlide();
-  resetInterval();
-});
-
-// Reset interval when user clicks arrows
-function resetInterval(){
-  clearInterval(slideInterval);
-  slideInterval = setInterval(nextSlide, 5000);
+if(menuToggle){
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
 }
 </script>
 
