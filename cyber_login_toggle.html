@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cyberpunk Holo Matrix Dashboard</title>
+<style>
+body, html {
+    margin:0; padding:0; width:100%; height:100%;
+    font-family: 'Space Grotesk', sans-serif;
+    background:#0f0f15; overflow:hidden; color:#fff; cursor:none;
+}
+/* PARTICLES + MATRIX RAIN + CUBES */
+#particles-js, #cubeCanvas, #matrixCanvas, #cursorTrail { position: fixed; top:0; left:0; width:100%; height:100%; z-index:0; }
+
+/* CENTER CONTAINER */
+.center-container {
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    z-index:10; display:flex; flex-direction: column; align-items:center; gap:20px;
+}
+
+/* FLOATING ANIMATION */
+@keyframes float {0% { transform: translateY(0px);}50% { transform: translateY(-10px);}100% { transform: translateY(0px);}}
+
+/* CARDS */
+.login-card, .dash-card {
+    background: rgba(15,15,21,0.95);
+    border:2px solid rgba(79,70,229,0.5);
+    border-radius:20px; padding:40px 50px; text-align:center;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 0 35px rgba(100,120,255,0.5);
+    width:360px; cursor:grab; animation: float 3s ease-in-out infinite;
+    position: relative; overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+/* HOLO SHIMMER */
+.holo-shimmer {
+    position:absolute; top:0; left:-100%; width:100%; height:100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.05) 100%);
+    transform: skewX(-20deg); pointer-events:none;
+    animation: shimmer 3s infinite linear;
+}
+@keyframes shimmer { 0%{left:-100%;}100%{left:100%;} }
+/* NEON PULSE */
+@keyframes neonPulse {0%,100{box-shadow:0 0 35px rgba(100,120,255,0.5),0 0 70px rgba(79,70,229,0.4);}50%{box-shadow:0 0 50px rgba(100,120,255,0.7),0 0 90px rgba(79,70,229,0.6);}}
+.login-card, .dash-card { animation: float 3s ease-in-out infinite, neonPulse 2.5s ease-in-out infinite; }
+/* INPUTS */
+.login-card input { width:80%; padding:12px; margin:12px 0; border:none; border-radius:12px;
+outline:none; font-size:16px; background: rgba(255,255,255,0.05); color:#fff;
+box-shadow:0 0 12px rgba(79,70,229,0.5); transition:all 0.3s ease; }
+.login-card input:focus { box-shadow:0 0 25px rgba(79,70,229,0.9); background: rgba(255,255,255,0.1); }
+/* BUTTONS */
+.login-card button, .neon-btn {
+    padding:12px 28px; margin-top:15px; border:none; border-radius:15px;
+    background:transparent; color:#fff; font-weight:600; text-transform:uppercase;
+    box-shadow:0 0 12px rgba(79,70,229,0.5); cursor:pointer; transition: all 0.3s ease; position: relative; overflow:hidden; 
+}
+.login-card button:hover, .neon-btn:hover, .dash-card:hover, .login-card:hover {
+    color:#4f46e5;
+    box-shadow:0 0 45px rgba(79,70,229,0.9),0 0 80px rgba(99,102,241,0.7);
+    transform: translateY(-5px) scale(1.02);
+}
+/* TOGGLE LINKS */
+.toggle-link { margin-top:15px; display:inline-block; cursor:pointer; color:#6366f1; text-decoration:underline; font-size:14px; transition: color 0.3s ease; }
+.toggle-link:hover { color:#facc15; }
+/* RIPPLE EFFECT */
+.ripple { position:absolute; border-radius:50%; background:rgba(79,70,229,0.3);
+transform:scale(0); animation:ripple 0.6s linear; pointer-events:none; }
+@keyframes ripple { to{ transform:scale(4); opacity:0; } }
+/* DASHBOARD CARDS */
+.dashboard-container { display:none; flex-direction:column; align-items:center; gap:20px; width:100%; }
+.dash-card { min-width:200px; max-width:300px; text-align:center; position:relative; }
+.dash-card h2, .dash-card h3 { color:#4f46e5; margin:0 0 10px 0; position:relative; animation:glitch 2s infinite; }
+.cards-row { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; }
+.action-buttons { margin-top:20px; display:flex; gap:20px; flex-wrap:wrap; }
+.interactive { animation: float 3s ease-in-out infinite, neonPulse 2.5s ease-in-out infinite; }
+/* CURSOR TRAIL */
+.cursor-dot { position:absolute; width:10px; height:10px; border-radius:50%; background:#4f46e5; pointer-events:none; box-shadow:0 0 15px #6366f1,0 0 25px #4f46e5; mix-blend-mode: screen; }
+/* GLITCH TEXT */
+@keyframes glitch { 0% { text-shadow: 2px 0 #facc15, -2px 0 #4f46e5; } 25% { text-shadow: -2px -2px #facc15, 2px 2px #4f46e5; } 50% { text-shadow: 2px 2px #facc15, -2px -2px #4f46e5; } 75% { text-shadow: -2px 0 #facc15, 2px 0 #4f46e5; } 100% { text-shadow: 2px 0 #facc15, -2px 0 #4f46e5; } }
+/* SCANLINE */
+.scanline { pointer-events:none; position:absolute; top:0; left:0; width:100%; height:100%;
+background: repeating-linear-gradient(transparent, transparent 2px, rgba(255,255,255,0.02) 3px); z-index:9; }
+/* HOLO NUMBERS PER DIGIT */
+.holo-num span { display:inline-block; font-weight:900; font-size:32px; animation: holoFlicker 0.1s infinite alternate; }
+@keyframes holoFlicker {
+0% { text-shadow: 1px 0 #facc15, -1px 0 #4f46e5, 0 1 #22c55e, 0 -1 #3b82f6; opacity:1;}
+50% { text-shadow: 0 0 #facc15, 1px 1px #4f46e5, -1px 0 #22c55e, 0 -1 #3b82f6; opacity:0.8;}
+100% { text-shadow: -1px 1 #facc15, 1px -1 #4f46f5, 0 1 #22c55e, 1px 0 #3b82f6; opacity:0.9;}
+}
+@media screen and (max-width:900px){ .cards-row { flex-direction:column; align-items:center; } .dash-card { max-width:250px; } .action-buttons { flex-direction:column; align-items:center; } }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+<body>
+<div id="particles-js"></div>
+<canvas id="cubeCanvas"></canvas>
+<canvas id="matrixCanvas"></canvas>
+<div id="cursorTrail"></div>
+<div class="scanline"></div>
+
+<div class="center-container" id="centerContainer">
+    <div class="login-card interactive" id="loginCard">
+        <div class="holo-shimmer"></div>
+        <div id="loginForm">
+            <h2>Login</h2>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button id="loginBtn">Login</button>
+            <div id="errorMsg"></div>
+            <span class="toggle-link" id="showRegister">Don't have an account? Register</span>
+        </div>
+        <div id="registerForm" style="display:none;">
+            <div class="holo-shimmer"></div>
+            <h2>Register</h2>
+            <input type="text" id="regUsername" placeholder="Username" required>
+            <input type="password" id="regPassword" placeholder="Password" required>
+            <button id="registerBtn">Register</button>
+            <span class="toggle-link" id="showLogin">Already have an account? Login</span>
+        </div>
+    </div>
+
+    <div class="dashboard-container" id="dashboard">
+        <div class="dash-card interactive"><div class="holo-shimmer"></div>
+            <h2>Welcome, Admin</h2>
+            <p class="holo-num" data-target="1">0</p>
+        </div>
+        <div class="cards-row">
+            <div class="dash-card interactive"><div class="holo-shimmer"></div><h3>Projects</h3><p class="holo-num" data-target="12">0</p></div>
+            <div class="dash-card interactive"><div class="holo-shimmer"></div><h3>Achievements</h3><p class="holo-num" data-target="23">0</p></div>
+            <div class="dash-card interactive"><div class="holo-shimmer"></div><h3>Research Papers</h3><p class="holo-num" data-target="5">0</p></div>
+        </div>
+        <div class="action-buttons">
+            <div class="neon-btn interactive">Add Project</div>
+            <div class="neon-btn interactive">Upload Paper</div>
+            <div class="neon-btn interactive">View Analytics</div>
+        </div>
+    </div>
+</div>
+
+<script>
+// LOGIN TOGGLE & LOGIN
+const loginForm=document.getElementById("loginForm"), registerForm=document.getElementById("registerForm");
+document.getElementById("showRegister").addEventListener("click", ()=>{loginForm.style.display="none"; registerForm.style.display="block";});
+document.getElementById("showLogin").addEventListener("click", ()=>{loginForm.style.display="block"; registerForm.style.display="none";});
+const LOGIN_USER="admin", LOGIN_PASS="1234", loginBtn=document.getElementById("loginBtn"), errorMsg=document.getElementById("errorMsg");
+const loginCard=document.getElementById("loginCard"), dashboard=document.getElementById("dashboard");
+loginBtn.addEventListener("click", ()=>{
+    const u=document.getElementById("username").value, p=document.getElementById("password").value;
+    if(u===LOGIN_USER && p===LOGIN_PASS){ loginCard.style.display="none"; dashboard.style.display="flex"; animateNumbers(); }
+    else errorMsg.textContent="Invalid username or password ❌";
+});
+
+// FLOAT + RIPPLE + TILT
+function addTilt(selector){
+    document.querySelectorAll(selector).forEach(card=>{
+        card.addEventListener('mousemove', e=>{
+            const rect=card.getBoundingClientRect();
+            const x=e.clientX-rect.left-rect.width/2, y=e.clientY-rect.top-rect.height/2;
+            card.style.transform=`translate(-50%,-50%) rotateY(${x*0.06}deg) rotateX(${-y*0.06}deg) translateZ(15px) scale(1.02)`;
+            card.style.boxShadow=`${-x*0.05}px ${-y*0.05}px 30px rgba(100,120,255,0.5), ${x*0.03}px ${y*0.03}px 20px rgba(100,120,255,0.3)`;
+        });
+        card.addEventListener('mouseleave', ()=>{ card.style.transform='translate(-50%,-50%) rotateY(0) rotateX(0) translateZ(0) scale(1)'; card.style.boxShadow='0 0 35px rgba(100,120,255,0.5)'; });
+        card.addEventListener('mouseenter', e=>{ card.addEventListener('mousemove', createRipple); });
+        card.addEventListener('mouseleave', e=>{ card.removeEventListener('mousemove', createRipple); });
+    });
+}
+function createRipple(e){
+    const ripple=document.createElement("div"); ripple.className="ripple";
+    const rect=e.target.getBoundingClientRect();
+    ripple.style.left=(e.clientX-rect.left)+"px"; ripple.style.top=(e.clientY-rect.top)+"px";
+    e.target.appendChild(ripple); setTimeout(()=>ripple.remove(),600);
+}
+addTilt('.interactive');
+
+// PARTICLES
+particlesJS("particles-js",{ "particles":{"number":{"value":150,"density":{"enable":true,"value_area":700}}, "color":{"value":["#4f46e5","#6366f1","#3b82f6","#facc15","#22c55e"]}, "shape":{"type":"circle"}, "opacity":{"value":0.8,"random":true}, "size":{"value":2,"random":true}, "line_linked":{"enable":true,"distance":120,"color":"#6366f1","opacity":0.4,"width":1}, "move":{"enable":true,"speed":1.8,"random":true,"straight":false,"out_mode":"out"}}, "interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"repulse"},"onclick":{"enable":true,"mode":"push"},"resize":true},"modes":{"grab":{"distance":150,"line_linked":{"opacity":0.5}},"repulse":{"distance":100,"duration":0.3},"push":{"particles_nb":4}}},"retina_detect":true});
+
+// 3D CUBES
+const canvas=document.getElementById("cubeCanvas"), ctx=canvas.getContext("2d"); canvas.width=window.innerWidth; canvas.height=window.innerHeight;
+let cubes=[]; class Cube{constructor(){this.x=Math.random()*canvas.width; this.y=Math.random()*canvas.height; this.size=4+Math.random()*12; this.angle=Math.random()*360; this.speed=0.5+Math.random()*1.2; this.depth=Math.random()*0.7+0.3;}
+draw(mx=0,my=0){ctx.save(); const px=(mx-canvas.width/2)*0.025*this.depth; const py=(my-canvas.height/2)*0.025*this.depth; ctx.translate(this.x+px,this.y+py); ctx.rotate(this.angle*Math.PI/180); ctx.strokeStyle=`rgba(100,120,255,${0.5*this.depth})`; ctx.strokeRect(-this.size/2,-this.size/2,this.size,this.size); ctx.restore(); this.angle+=this.speed; this.y-=0.3*this.depth; if(this.y<-this.size)this.y=canvas.height+this.size;}}
+for(let i=0;i<100;i++) cubes.push(new Cube()); let mouseX=0, mouseY=0;
+document.addEventListener('mousemove', e=>{mouseX=e.clientX; mouseY=e.clientY;});
+function animateCubes(){ctx.clearRect(0,0,canvas.width,canvas.height);cubes.forEach(c=>c.draw(mouseX,mouseY));requestAnimationFrame(animateCubes);}
+animateCubes();
+
+// CURSOR TRAIL
+const cursorTrail=document.getElementById("cursorTrail"); const trailDots=[];
+for(let i=0;i<12;i++){ const dot=document.createElement("div"); dot.className="cursor-dot"; cursorTrail.appendChild(dot); trailDots.push(dot);}
+document.addEventListener('mousemove', e=>{ trailDots.forEach((dot,i)=>{ setTimeout(()=>{ dot.style.left=e.clientX+"px"; dot.style.top=e.clientY+"px"; },i*8); }); });
+
+// HOLOGRAPHIC NUMBERS
+function animateNumbers(){
+    document.querySelectorAll('.holo-num').forEach(el=>{
+        const target=+el.dataset.target; el.innerHTML=""; for(let ch of target.toString()){ const span=document.createElement("span"); span.textContent="0"; el.appendChild(span);}
+        const spans=el.querySelectorAll("span");
+        function update(){ let done=true;
+            spans.forEach((span,i)=>{
+                const t=parseInt(span.textContent); const digit=parseInt(target.toString()[i]);
+                if(t<digit){ span.textContent=t+1; done=false; }
+                span.style.color=`hsl(${Math.random()*360},100%,75%)`; span.style.textShadow=`1px 0 hsl(${Math.random()*360},100%,75%), -1px 0 hsl(${Math.random()*360},100%,75%)`;
+            });
+            if(!done) requestAnimationFrame(update);
+        }update();
+    });
+}
+
+// MATRIX RAIN
+const matrixCanvas=document.getElementById("matrixCanvas"); const mctx=matrixCanvas.getContext("2d"); matrixCanvas.width=window.innerWidth; matrixCanvas.height=window.innerHeight;
+const cols=Math.floor(matrixCanvas.width/14); const drops=[]; for(let x=0;x<cols;x++) drops[x]=Math.random()*matrixCanvas.height;
+const chars="01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&*@";
+function drawMatrix(){ mctx.fillStyle="rgba(0,0,0,0.05)"; mctx.fillRect(0,0,matrixCanvas.width,matrixCanvas.height);
+mctx.font="14px monospace"; for(let i=0;i<cols;i++){ const text=chars[Math.floor(Math.random()*chars.length)]; mctx.fillStyle=`hsl(${Math.random()*360},100%,60%)`; mctx.fillText(text,i*14,drops[i]); drops[i]+=14; if(drops[i]>matrixCanvas.height) drops[i]=0; } requestAnimationFrame(drawMatrix);}
+drawMatrix();
+
+// WINDOW RESIZE
+window.addEventListener('resize', ()=>{canvas.width=matrixCanvas.width=window.innerWidth; canvas.height=matrixCanvas.height=window.innerHeight;});
+</script>
+</body>
+</html>
