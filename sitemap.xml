@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://acharyaprem.com.np/</loc>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://acharyaprem.com.np/blog</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://acharyaprem.com.np/research</loc>
-    <priority>0.9</priority>
-  </url>
+
+<url> <loc>https://www.acharyaprem.com.np/</loc> <priority>1.0</priority> </url>
+
+<url> <loc>https://www.acharyaprem.com.np/Explore/explore.html</loc> <priority>0.9</priority> </url>
+
+<url> <loc>https://www.acharyaprem.com.np/Personal%20Blog/blog.html</loc> <priority>0.9</priority> </url>
+
+<url> <loc>https://www.acharyaprem.com.np/Personal%20Blog/poemblog.html</loc> <priority>0.8</priority> </url>
+
+<url> <loc>https://www.acharyaprem.com.np/Personal%20Blog/notesblog.html</loc> <priority>0.8</priority> </url>
+
+<url> <loc>https://www.acharyaprem.com.np/Personal%20Blog/freehandblog.html</loc> <priority>0.8</priority> </url>
+
+<url> <loc>https://www.acharyaprem.com.np/Personal%20Blog/poems/poem1.html</loc> <priority>0.7</priority> </url>
+
+<url> <loc>https://www.acharyaprem.com.np/Personal%20Blog/poems/poem2.html</loc> <priority>0.7</priority> </url>
+
+<url> <loc>https://www.acharyaprem.com.np/Personal%20Blog/poems/poem3.html</loc> <priority>0.7</priority> </url>
+
+<url> <loc>https://www.acharyaprem.com.np/Personal%20Blog/notes/notes1.html</loc> <priority>0.7</priority> </url>
+
+<url> <loc>https://www.acharyaprem.com.np/Personal%20Blog/notes/notes2.html</loc> <priority>0.7</priority> </url>
+
+<url> <loc>https://www.acharyaprem.com.np/Personal%20Blog/notes/notes3.html</loc> <priority>0.7</priority> </url>
+
+<url> <loc>https://www.acharyaprem.com.np/Personal%20Blog/freehand/freehand1.html</loc> <priority>0.7</priority> </url>
+
+<url> <loc>https://www.acharyaprem.com.np/Personal%20Blog/freehand/freehand2.html</loc> <priority>0.7</priority> </url>
+
+<url> <loc>https://www.acharyaprem.com.np/Personal%20Blog/freehand/freehand3.html</loc> <priority>0.7</priority> </url>
+
 </urlset>
