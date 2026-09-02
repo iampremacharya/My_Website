@@ -117,42 +117,6 @@ nav a:hover { color: var(--neon-blue); }
 @media(max-width:1024px){ .about-photo img{width:250px;height:250px;} .about-text{font-size:1.2rem;} }
 @media(max-width:768px){ .about-content{flex-direction:column; align-items:center; text-align:center;} .about-photo img{width:220px;height:220px;} .about-text{font-size:1.1rem;} }
 
-/* ===== POEM SLIDER ===== */
-.poem-slider-section { padding:60px 20px; text-align:center; }
-.poem-slider-section h2{ font-size:2.8rem; margin-bottom:10px; }
-.poem-slider-section p{ font-size:1.2rem; color:#eee; margin-bottom:30px; }
-.slider-wrapper { position: relative; }
-.poem-slider { display:flex; overflow-x:auto; scroll-behavior:smooth; gap:25px; padding-bottom:10px; scrollbar-width:none; }
-.poem-slider::-webkit-scrollbar{display:none;}
-.poem-card{
-  flex:0 0 auto; width:400px; height:70vh;
-  border-radius:15px; padding:25px; display:flex; flex-direction:column; justify-content:center;
-  text-align:center; cursor: grab; transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow:hidden; box-shadow:0 6px 25px rgba(0,0,0,0.4); color:#fff; font-weight:500;
-}
-.poem-card:hover{ transform: translateY(-10px); box-shadow:0 16px 35px rgba(0,0,0,0.5); }
-.poem-card p{ flex:1; font-size:1.2rem; line-height:1.7; white-space: pre-line; overflow-y:auto; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.5) transparent; }
-.poem-card p::-webkit-scrollbar { width:0px; background:transparent; }
-.poem-card:hover p::-webkit-scrollbar { width:6px; }
-.poem-card:hover p::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.5); border-radius:3px; }
-.slider-btn{
-  background:#ff6ec7; color:#fff; border:none; font-size:2rem; padding:12px 16px; border-radius:50%;
-  cursor:pointer; position:absolute; top:50%; transform:translateY(-50%); z-index:2; transition: background 0.3s;
-}
-.slider-btn:hover{background:#ff1e7c;}
-.slider-btn.left{left:15px;} .slider-btn.right{right:15px;}
-@media(max-width:1200px){ .poem-card{width:350px; height:65vh;} }
-@media(max-width:992px){ .poem-card{width:300px; height:60vh;} }
-@media(max-width:768px){ .poem-card{width:240px; height:55vh;} }
-@media(max-width:480px){ .poem-card{width:180px; height:50vh;} }
-
-/* Card Backgrounds */
-.card1 { background: linear-gradient(135deg, #e05583, #c43b5e); }
-.card2 { background: linear-gradient(135deg, #7a5aa6, #a176c4); }
-.card3 { background: linear-gradient(135deg, #1f8fad, #3c72b3); }
-.card4 { background: linear-gradient(135deg, #d47c6c, #e09988); }
-.card5 { background: linear-gradient(135deg, #2fcf80, #1ea6b7); }
-.card6 { background: linear-gradient(135deg, #d4a35c, #e78a6d); }
 .contact-section {
   padding: 5rem 2rem;
   text-align: center;
@@ -297,9 +261,8 @@ footer { text-align:center; padding:2rem; background:#050813; color:#9ca3af; fon
     <a href="#">Home</a>
     <a href="#about-me">About Me</a>
     <a href="#contact">Contacts</a>
-    <a href="#poems">Poems</a>
-    <a href="blog.html">Personal Blog</a>
-    <a href="explore.html">Explore</a>
+    <a href="Personal Blog/blog.html">Personal Blog</a>
+    <a href="Explore/explore.html">Explore</a>
     <a href="cyber_login_toggle.html">Login</a>
   </div>
   <div class="hamburger" id="hamburger">
@@ -312,9 +275,8 @@ footer { text-align:center; padding:2rem; background:#050813; color:#9ca3af; fon
   <a href="#">Home</a>
   <a href="#about-me">About Me</a>
   <a href="#contact">Contacts</a>
-  <a href="#poems">Poems</a>
-  <a href="blog.html">Personal Blog</a>
-  <a href="explore.html">Explore</a>
+  <a href="Personal Blog/blog.html">Personal Blog</a>
+  <a href="Explore/explore.html">Explore</a>
   <a href="cyber_login_toggle.html">Login</a>
 </div>
 <section class="hero">
@@ -346,120 +308,6 @@ physics, AI, web technologies, and creative digital experiences.I'm a passionate
         Welcome to my digital space where creativity meets technology, and ideas find wings.
       </p>
     </div>
-  </div>
-</section>
-
-<!-- ===== Poem Slider ===== -->
-<section id="poems" class="poem-slider-section">
-  <h2>Poem Collections</h2>
-  <p>Swipe, click arrows or watch autoplay to read poems</p>
-
-  <div class="slider-wrapper">
-    <button class="slider-btn left">&#10094;</button>
-    <div class="poem-slider">
-      <div class="poem-card card1"><p><b>You and I</b>
-You only love the brighter side
-but I cherish both.
-You see stain and do ignore
-but I embrace both.
-
-You seek for perfection
-but I accept both.
-You hate the wrong one
-but I never loathe.
-
-You search the ground hoping
-to find the gold.
-I dug it and found it
-now trying to mold.
-
-You judge it by the cover
-but I wait and behold.
-Till the end;
-You lose the hope
-but I remain bold.</p></div>
-
-      <div class="poem-card card2"><p><b>Glimpse at it...</b>
-Hanged, Ranged & Estranged
-in the walls for years & years.
-
-Hardly ever been
-gazed and stared at
-But,
-When I did,
-That frame worthed much more,
-than that I could ever have dreamt
-
-One thing fascinating about it !!
-
-You stare, talk, quarrel or even fight,
-what you get in return is just 'Quiet'
-
-Up there for forever,
-being mere
-need to be taken cared
-as it seems to be very rare ...</p></div>
-
-      <div class="poem-card card3"><p><b>Eyes of the Eternal</b>
-Symphony of love,
-being paraded in your eyes,
-Deluding in such a way,
-being enmeshed with ties;
-
-Royal vague of obsession,
-leading the cognitive desonance,
-Shower some mercy on me,
-reviving my eternal resonance.</p></div>
-
-      <div class="poem-card card4"><p>मलाई यो संसारमा भित्राउने सृष्टि हौ तिमी,
-मेरा हरेक पाइलाहरु पछिका दृष्टि हौ तिमी,
-मेरो भौतिकशरीरमा आत्मा भर्ने स्रष्टा हौ तिमी,
-मेरा दुःख, पिडा आफै थाहापाउने द्रष्टा हौ तिमी ।
-
-मेरी ममता हौ तिमी मेरो क्षमता हौ तिमी,
-मेरा खुसी र मुस्कानका रहस्य हौ तिमी,
-मेरी देवता हौ तिमी मेरी माता हौ तिमी,
-सदैभ, मेरा लागि सर्वगाता हौ तिमी ।
-
-मेरी माता हौ तिमी मेरी ममता हौ तिमी।।</p></div>
-
-      <div class="poem-card card5"><p><b>Leap towards a new Bloom</b>
-Like a breeze
-entering the room,
-a sober soul of
-a child is consumed by gloom.
-Obligations in every step,
-hindering leaps to a new bloom.
-
-Still seeking a new path
-in this realm of doom.
-&
-With discrete ways to groom,
-a life is crafted
-leaping towards a new bloom...</p></div>
-
-      <div class="poem-card card6"><p><b>Newness</b>
-Stepping into the dawn of a new chapter,
-where endless possibilities awaits.
-Embracing the change,
-as life's tapestry always sways.
-
-Life's courses have changed,
-yet new paths awaits to be braved.
-Dreams have changed,
-yet possibilities still linger to be arranged.
-
-Perspectives have changed,
-unveiling a world entirely rearranged.
-Now, I am truly engaged,
-as my worldview has exchanged.
-
-New perspectives emerged,
-altering landscape of my aspirations.
-Fresh insights blossomed, shaping.</p></div>
-
-    </div>
-    <button class="slider-btn right">&#10095;</button>
   </div>
 </section>
 <!-- ===== CONTACT ME SECTION WITH SVG ICONS ===== -->
@@ -634,29 +482,6 @@ draw();
 </script>
 <script>
 particlesJS("particles-js",{particles:{number:{value:80},color:{value:"#00eaff"},shape:{type:"circle"},opacity:{value:0.4},size:{value:2},move:{speed:1}},interactivity:{events:{onhover:{enable:true,mode:"repulse"}}}});
-</script>
-
-<script>
-/* ===== Slider ===== */
-const slider = document.querySelector('.poem-slider');
-const leftBtn = document.querySelector('.slider-btn.left');
-const rightBtn = document.querySelector('.slider-btn.right');
-const scrollAmount = 420;
-rightBtn.addEventListener('click', ()=>{slider.scrollBy({left:scrollAmount, behavior:'smooth'});});
-leftBtn.addEventListener('click', ()=>{slider.scrollBy({left:-scrollAmount, behavior:'smooth'});});
-let isDown=false, startX, scrollLeft;
-slider.addEventListener('mousedown',(e)=>{isDown=true; startX=e.pageX-slider.offsetLeft; scrollLeft=slider.scrollLeft; slider.style.cursor='grabbing';});
-slider.addEventListener('mouseleave',()=>{isDown=false; slider.style.cursor='grab';});
-slider.addEventListener('mouseup',()=>{isDown=false; slider.style.cursor='grab';});
-slider.addEventListener('mousemove',(e)=>{ if(!isDown) return; e.preventDefault(); const x=e.pageX-startX; slider.scrollLeft=scrollLeft-(x*2); });
-slider.addEventListener('touchstart',(e)=>{ startX=e.touches[0].pageX-slider.offsetLeft; scrollLeft=slider.scrollLeft; });
-slider.addEventListener('touchmove',(e)=>{ const x=e.touches[0].pageX-slider.offsetLeft; slider.scrollLeft=scrollLeft-(x*2); });
-// Autoplay
-let autoplaySpeed = 30;
-function autoPlay(){ slider.scrollLeft+=1; if(slider.scrollLeft >= slider.scrollWidth-slider.clientWidth){ slider.scrollLeft=0; } }
-let autoPlayInterval = setInterval(autoPlay, autoplaySpeed);
-slider.addEventListener('mouseenter', ()=>{ clearInterval(autoPlayInterval); });
-slider.addEventListener('mouseleave', ()=>{ autoPlayInterval=setInterval(autoPlay, autoplaySpeed); });
 </script>
 
 <script>
