@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home</title>
+<link rel="stylesheet" href="explore.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+  <div class="logo">MERP<span>.</span></div>
+
+  <div class="menu-toggle" id="menuToggle">
+    ☰
+  </div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="future.html">Future</a></li>
+    <li><a href="music.html">Music</a></li>
+    <li><a href="ai.html">AI</a></li>
+  </ul>
+</nav>
+
+
+<header>
+  <div class="slider">
+    <div class="slide active" style="background-image:url('future.jpg')"></div>
+    <div class="slide" style="background-image:url('music.jpg')"></div>
+    <div class="slide" style="background-image:url('ca.webp')"></div>
+  </div>
+
+  <div class="overlay">
+    <h1 id="heroTitle">Welcome to the <span>Future</span></h1>
+    <p id="heroText">Explore smooth sliders, modern design, and bold ideas</p>
+    <a id="exploreBtn" href="future.html">EXPLORE</a>
+  </div>
+
+  <div class="nav left">&#10094;</div>
+  <div class="nav right">&#10095;</div>
+  <div class="scroll">SCROLL ↓</div>
+</header>
+<footer>© 2026 Prem Acharya</footer>
+<script>
+const slides=document.querySelectorAll('.slide');
+const heroTitle=document.getElementById('heroTitle');
+const heroText=document.getElementById('heroText');
+const exploreBtn=document.getElementById('exploreBtn');
+
+let current=0;
+
+const slideData=[
+ {page:'future.html',title:'Welcome to the <span>Future</span>',text:'Explore smooth sliders, modern design, and bold ideas'},
+ {page:'music.html',title:'Feel the <span>Music</span>',text:'Sound, rhythm, and creativity combined'},
+ {page:'ai.html',title:'Driven by <span>AI</span>',text:'Artificial intelligence shaping tomorrow'}
+];
+
+function showSlide(i){
+ slides.forEach(s=>s.classList.remove('active'));
+ slides[i].classList.add('active');
+ heroTitle.innerHTML=slideData[i].title;
+ heroText.textContent=slideData[i].text;
+ exploreBtn.href=slideData[i].page;
+}
+
+function next(){ current=(current+1)%slides.length; showSlide(current); }
+function prev(){ current=(current-1+slides.length)%slides.length; showSlide(current); }
+
+let interval=setInterval(next,3000);
+
+document.querySelector('.nav.right').onclick=()=>{ next(); reset(); };
+document.querySelector('.nav.left').onclick=()=>{ prev(); reset(); };
+
+function reset(){
+ clearInterval(interval);
+ interval=setInterval(next,5000);
+}
+</script>
+<script>
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+
+if(menuToggle){
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+}
+</script>
+
+</body>
+</html>

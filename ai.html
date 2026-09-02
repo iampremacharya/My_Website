@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artificial Intelligence</title>
+<link rel="stylesheet" href="explore.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+  <div class="logo">MERP<span>.</span></div>
+
+  <div class="menu-toggle" id="menuToggle">
+    ☰
+  </div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="explore.html">Home</a></li>
+    <li><a href="future.html">Future</a></li>
+    <li><a href="music.html">Music</a></li>
+    <li><a href="ai.html">AI</a></li>
+  </ul>
+</nav>
+
+
+<header class="page-header" style="background:url('ca.webp') center/cover no-repeat;">
+  <h1><span style="color:var(--accent)">AI</span> & Automation</h1>
+</header>
+
+<main>
+  <p>
+    Learn how artificial intelligence, machine learning,
+    and automation are shaping the future of technology and society.
+  </p>
+
+  <a class="button" href="explore.html">← Back to Home</a>
+</main>
+<footer>© 2026 Prem Acharya</footer>
+<script>
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+
+if(menuToggle){
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+}
+</script>
+
+</body>
+</html>

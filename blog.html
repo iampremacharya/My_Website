@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prem’s Blog Portal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:#0e0f13;
+  --card:#161822;
+  --text:#eaeaf0;
+  --muted:#9aa0b3;
+  --accent:#7f8cff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;}
+nav{padding:20px 40px;border-bottom:1px solid #222;display:flex;justify-content:space-between;align-items:center;}
+nav h1{font-size:1.2rem;}
+nav ul{display:flex;gap:24px;list-style:none;}
+nav a{text-decoration:none;color:var(--muted);font-size:0.9rem;}
+nav a:hover{color:var(--accent);}
+.container{display:grid;grid-template-columns:3fr 1fr;gap:40px;padding:40px;max-width:1200px;margin:auto;}
+.featured{background:linear-gradient(135deg,#1a1d2e,#111322);padding:40px;border-radius:16px;margin-bottom:40px;}
+.featured span{color:var(--accent);font-size:0.8rem;}
+.featured h2{font-size:2rem;margin:12px 0;}
+.featured p{color:var(--muted);max-width:600px;}
+.card{background:var(--card);padding:24px;border-radius:14px;transition:transform .3s ease;text-decoration:none;color:inherit;display:block;margin-bottom:16px;}
+.card:hover{transform:translateY(-6px);}
+.card span{font-size:.75rem;color:var(--accent);}
+.card h3{margin:10px 0;font-size:1.1rem;}
+.card p{font-size:.9rem;color:var(--muted);}
+.slider{display:flex;gap:24px;overflow-x:auto;padding-bottom:10px;scroll-behavior:smooth;}
+.slider::-webkit-scrollbar{height:6px;}
+.slider::-webkit-scrollbar-thumb{background:var(--accent);border-radius:10px;}
+.sidebar{position:sticky;top:40px;}
+.widget{background:var(--card);padding:24px;border-radius:14px;margin-bottom:24px;}
+.widget h4{margin-bottom:12px;font-size:1rem;}
+.widget ul{list-style:none;}
+.widget li{margin-bottom:10px;font-size:.9rem;color:var(--muted);}
+footer{text-align:center;padding:40px;color:var(--muted);font-size:.85rem;}
+@media(max-width:900px){.container{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav>
+<h1>Prem’s Blog</h1>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="poemblog.html">Poems</a></li>
+<li><a href="freehandblog.html">Free Hand</a></li>
+<li><a href="notesblog.html">Notes</a></li>
+<li><a href="#">About</a></li>
+</ul>
+</nav>
+
+<div class="container">
+
+<main>
+
+<section class="featured">
+<span>FEATURED</span>
+<h2>The Night That Learned My Name</h2>
+<p>A reflection on silence, memory, and the physics of loneliness.</p>  
+</section>
+
+<section>
+<h2>Recent Posts</h2>
+<div class="grid">
+<a href="poems/poem1.html" class="card"><span>POETRY</span><h3>Eyes of the Eternal</h3><p>Eyes that stunned me.</p></a>
+<a href="freehand/freehand1.html" class="card"><span>Free Hand</span><h3></h3><p></p></a>
+<a href="notes/notes1.html" class="card"><span>NOTES</span><h3></h3><p></p></a>
+</div>
+</section>
+
+</main>
+
+<aside class="sidebar">
+<div class="widget">
+<h4>About</h4>
+<p style="font-size:.9rem;color:var(--muted);">A personal blog portal for poems, research, and notes.</p>
+</div>
+
+<div class="widget">
+<h4>Categories</h4>
+<ul>
+<li>Poetry</li>
+<li>Free Hand</li>
+<li>Notes</li>
+</ul>
+</div>
+
+<div class="widget">
+<h4>Recent Posts</h4>
+<ul>
+<li><a href="poems/poem1.html" style="color:var(--muted)">Glimpse at It</a></li>
+<li><a href="freehand/freehand1.html" style="color:var(--muted)"></a></li>
+<li><a href="notes/notes1.html" style="color:var(--muted)"></a></li>
+</ul>
+</div>
+</aside>
+
+</div>
+
+<footer>written thoughtfully by Prem © 2026</footer>
+
+</body>
+</html>
