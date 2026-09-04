@@ -3,597 +3,2092 @@
 <head>
 <meta charset="UTF-8">
 
+<title>Prem Acharya | Computer Engineering Student & Research Enthusiast</title>
 
-<!-- BASIC SEO -->
-<title>Prem Acharya | Student & Research Enthusiast</title>
-
-<meta name="description" content="Official website of Prem Acharya, a student and research enthusiast from Nepal exploring physics, technology, artificial intelligence, and scientific research.">
+<meta name="description" content="Official portfolio of Prem Acharya, a Computer Engineering student at IOE Thapathali Campus exploring software development, artificial intelligence, engineering systems, computational methods, and interdisciplinary research in Nepal.">
 
 <meta name="author" content="Prem Acharya">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Search Engine -->
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.acharyaprem.com.np/">
 
-<!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Prem Acharya | Student & Research Enthusiast">
-<meta property="og:description" content="Explore Prem Acharya's projects, research, writings, and interests in physics, technology, AI, and science.">
+<meta property="og:title" content="Prem Acharya | Computer Engineering Student & Research Enthusiast">
+<meta property="og:description" content="Explore Prem Acharya's academic journey, software projects, engineering research, technical interests, writings, and projects.">
 <meta property="og:url" content="https://www.acharyaprem.com.np/">
 <meta property="og:image" content="https://www.acharyaprem.com.np/me.jpg">
 
-<!-- Twitter / X -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Prem Acharya | Student & Research Enthusiast">
-<meta name="twitter:description" content="Explore Prem Acharya's projects, research, writings, and interests in physics, technology, AI, and science.">
-<meta name="twitter:image" content="https://www.acharyaprem.com.np/me.jpg">
-
-<!-- Favicon -->
 <link rel="icon" type="image/jpeg" href="me.jpg">
 
-<!-- Google Font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
+
 :root {
-  --bg-dark: #0b0f1a;
-  --card-dark: #11162a;
-  --neon-blue: #00eaff;
-  --neon-purple: #8a2be2;
-  --text-light: #e5e7eb;
+  --bg-canvas: #f4f3ef;
+  --panel-bg: #ffffff;
+  --text-primary: #121316;
+  --text-muted: #62656d;
+  --border-light: #e2e1da;
+  --border-strong: #121316;
+  --accent-blue: #002244;
+  --accent-rust: #c84b31;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
-/* ===== Reset & Body ===== */
-*{margin:0; padding:0; box-sizing:border-box; font-family:'Space Grotesk', sans-serif;}
-body {background: radial-gradient(circle at top, #11162a, var(--bg-dark)); color: var(--text-light); overflow-x:hidden;}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-/* ===== Graphical Background Layers ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Structural Grid Line Backdrop */
+
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(0,234,255,0.15), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(138,43,226,0.15), transparent 40%),
-    repeating-linear-gradient(to right, rgba(255,255,255,0.03) 0 1px, transparent 1px 60px),
-    repeating-linear-gradient(to bottom, rgba(255,255,255,0.03) 0 1px, transparent 1px 60px);
-  z-index: -2;
+  background-image:
+    linear-gradient(to right, var(--border-light) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-light) 1px, transparent 1px);
+  background-size: 48px 48px;
+  z-index: -1;
+  pointer-events: none;
 }
 
-#particles-js, #lines-bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+/* Header & Main Navigation */
 
-/* ===== NAVBAR ===== */
 nav {
-  display:flex; justify-content: space-between; align-items:center;
-  padding: 1.2rem 3rem;
-  position: sticky; top:0;
-  background: rgba(11,15,26,0.8); backdrop-filter: blur(10px); z-index:100;
-}
-nav h1 { color: var(--neon-blue); font-size:1.5rem; letter-spacing:2px; }
-nav a { color: var(--text-light); margin-left:2rem; text-decoration:none; transition:0.3s; }
-nav a:hover { color: var(--neon-blue); }
-
-/* ===== HERO SECTION ===== */
-.hero { min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:2rem; }
-.hero h1 {
-  font-size:4.5rem;
-  background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
-.hero h2 {
-  font-size:3.0rem;
-  background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
-.hero p { margin:1.5rem 0; font-size:1.1rem; color:#cbd5f5; }
-.btn {
-  padding:0.9rem 2rem;
-  background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
-  border:none; border-radius:30px; color:#000; font-weight:600;
-  cursor:pointer; box-shadow:0 0 20px rgba(0,234,255,0.4); transition:0.3s;
-}
-.btn:hover { transform:scale(1.05); box-shadow:0 0 35px rgba(138,43,226,0.6); }
-
-/* ===== ABOUT ME SECTION ===== */
-.about-section {
-  padding: 100px 20px; display:flex; justify-content:center; align-items:center; min-height:90vh;
-  opacity:0; transform:translateX(-100px); transition: opacity 1s ease, transform 1s ease;
-}
-.about-section.visible { opacity:1; transform:translateX(0); }
-.about-content {
-  display:flex; flex-wrap:wrap; max-width:1100px;
-  background: rgba(17,22,42,0.88); backdrop-filter: blur(15px);
-  border-radius:25px; padding:50px; box-shadow:0 10px 40px rgba(0,0,0,0.5); gap:40px; color:#fff;
-}
-.about-photo { flex:1 1 300px; display:flex; justify-content:center; align-items:center; }
-.about-photo img { width:300px; height:300px; object-fit:cover; border-radius:50%; border:5px solid #00eaff; box-shadow:0 0 25px rgba(0,234,255,0.4); }
-.about-text { flex:2 1 500px; }
-.about-text h2 { font-size:3rem; margin-bottom:25px; background:linear-gradient(90deg,#00eaff,#8a2be2); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-.about-text p { font-size:1.3rem; line-height:2; color:#f0f0f0;text-align: justify; }
-@media(max-width:1024px){ .about-photo img{width:250px;height:250px;} .about-text{font-size:1.2rem;} }
-@media(max-width:768px){ .about-content{flex-direction:column; align-items:center; text-align:center;} .about-photo img{width:220px;height:220px;} .about-text{font-size:1.1rem;} }
-
-.contact-section {
-  padding: 5rem 2rem;
-  text-align: center;
-  background: linear-gradient(135deg, #11162a, #1f1c2c);
-  color: #fff;
-}
-
-.contact-section h2 {
-  font-size: 3rem;
-  color: #00eaff;
-  margin-bottom: 1rem;
-}
-
-.contact-section p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  color: #cbd5f5;
-}
-
-.contact-icons {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
-
-.contact-icon {
-  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  font-size: 1.8rem;
-  transition: all 0.3s ease;
+  padding: 1.5rem 8%;
+  background: rgba(244, 243, 239, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-strong);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.brand-logo {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.brand-logo span {
+  color: var(--accent-rust);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent-rust);
+}
+
+/* Mobile Menu */
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
   cursor: pointer;
-  box-shadow: 0 0 15px rgba(0,234,255,0.3);
+  z-index: 1000;
 }
 
-.contact-icon:hover {
-  transform: scale(1.2);
-  box-shadow: 0 0 35px rgba(0,234,255,0.7);
+.hamburger div {
+  width: 22px;
+  height: 2px;
+  background: var(--text-primary);
+  transition: 0.3s;
 }
 
-/* Brand colors */
-.contact-icon.fb { background:#4267B2; }
-.contact-icon.yt { background:#FF0000; }
-.contact-icon.li { background:#0077B5; }
-.contact-icon.gm { background:#EA4335; }
-.contact-icon.gh { background:#333; }
-.contact-icon.scholar { background:#1a73e8; }
-
-.contact-icon svg { pointer-events: none; width: 30px; height: 30px; }
-
-/* ===== FOOTER ===== */
-footer { text-align:center; padding:2rem; background:#050813; color:#9ca3af; font-size:0.9rem; }
-/* Hamburger button hidden on desktop */
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-.hamburger div { width: 25px; height: 3px; background: var(--text-light); border-radius: 2px; transition: all 0.3s; }
-
-/* Sidebar hidden initially */
 .sidebar {
   position: fixed;
   top: 0;
-  left: -250px;
-  width: 250px;
-  height: 100%;
-  background: rgba(17,22,42,0.95);
-  backdrop-filter: blur(15px);
+  right: -100%;
+  width: 300px;
+  height: 100vh;
+  background: var(--panel-bg);
   display: flex;
   flex-direction: column;
-  padding-top: 4rem;
-  gap: 2rem;
-  transition: left 0.3s ease;
+  padding: 6rem 2.5rem;
+  gap: 1.75rem;
+  transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 999;
+  border-left: 1px solid var(--border-strong);
 }
-.sidebar a { color: var(--text-light); text-decoration: none; padding: 0.8rem 2rem; font-size: 1.2rem; }
-.sidebar a:hover { color: var(--neon-blue); }
 
-/* Sidebar active */
-.sidebar.active { left: 0; }
+.sidebar a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
 
-/* Mobile styles */
-@media(max-width:768px){
-  nav .nav-links { display: none; } /* hide desktop nav links */
-  .hamburger { display: flex; }    /* show hamburger on mobile */
+.sidebar.active {
+  right: 0;
 }
-.hamburger.active div:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-.hamburger.active div:nth-child(2) { opacity: 0; }
-.hamburger.active div:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-/* ===== Modal Styles ===== */
-.modal {
-  display: none; 
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:200;
-}
-.modal-content {
-  background: var(--card-dark); padding: 40px; border-radius: 20px;
-  max-width: 400px; width: 90%; text-align:center; color:#fff; position:relative;
-}
-.close-btn {
-  position:absolute; top:15px; right:20px; font-size:1.5rem; cursor:pointer; color:#fff;
-}
-.modal input {
-  width:100%; padding:12px; margin:10px 0; border-radius:8px; border:none; font-size:1rem;
-}
-.modal button { margin-top:10px; width:100%; }
-#registerMessage { margin-top:15px; font-size:0.95rem; }
 
-#feedbackForm {
-  max-width: 500px;
+.hamburger.active div:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active div:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active div:nth-child(3) {
+  transform: rotate(-45deg) translate(-5px, -5px);
+}
+
+/* Hero */
+
+.hero {
+  padding: 6rem 8% 4rem;
+  max-width: 1320px;
   margin: 0 auto;
+}
+
+.hero-index-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-rust);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.3rem 0.75rem;
+  background: #f0eae1;
+  border: 1px solid var(--border-strong);
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  font-family: var(--font-sans);
+  font-size: clamp(3.2rem, 7vw, 5.6rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -2px;
+  color: var(--text-primary);
+  margin-bottom: 2.2rem;
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 4rem;
+  align-items: end;
+}
+
+.hero-body {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.btn-blueprint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.2rem;
+  background: var(--text-primary);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 1px solid var(--border-strong);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-top: 2rem;
+}
+
+.btn-blueprint:hover {
+  background: var(--accent-rust);
+  border-color: var(--accent-rust);
+  transform: translateY(-2px);
+}
+
+/* Sections */
+
+.section-wrapper {
+  padding: 3.5rem 8%;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.panel-card {
+  background: var(--panel-bg);
+  border: 1px solid var(--border-strong);
+  padding: 4rem;
+}
+
+.section-tag {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-rust);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.75rem;
+}
+
+.section-heading {
+  font-family: var(--font-sans);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+}
+
+/* Specification Grid */
+
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.spec-item {
+  background: var(--panel-bg);
+  border: 1px solid var(--border-light);
+  border-left: 3px solid var(--accent-blue);
+  padding: 1.75rem;
+}
+
+.spec-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.spec-value {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Skills */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+.skill-category {
+  background: var(--bg-canvas);
+  border: 1px solid var(--border-strong);
+  padding: 2rem;
+}
+
+.skill-cat-title {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent-rust);
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border-strong);
+  padding-bottom: 0.5rem;
+}
+
+.skill-list {
+  list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 0.75rem;
 }
 
-#feedbackForm input, #feedbackForm textarea {
-  padding: 12px;
-  border-radius: 8px;
-  border: none;
-  font-size: 1rem;
+.skill-list li {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-#feedbackMessage {
-  margin-top: 10px;
+.skill-list li::before {
+  content: "→";
+  color: var(--accent-blue);
+}
+
+/* Projects */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  background: var(--panel-bg);
+  border: 1px solid var(--border-strong);
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-rust);
+}
+
+.project-meta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent-rust);
+  margin-bottom: 0.75rem;
+}
+
+.project-title {
+  font-family: var(--font-sans);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.85rem;
+}
+
+.project-desc {
+  color: var(--text-muted);
   font-size: 0.95rem;
-  color: #00eaff;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.project-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.tag-pill {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: var(--bg-canvas);
+  border: 1px solid var(--border-light);
+  padding: 0.2rem 0.5rem;
+  text-transform: uppercase;
+}
+
+.project-actions {
+  display: flex;
+  gap: 1.25rem;
+  border-top: 1px solid var(--border-light);
+  padding-top: 1rem;
+}
+
+.project-link {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.project-link:hover {
+  color: var(--accent-rust);
+}
+
+/* Timeline */
+
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border-left: 2px solid var(--border-strong);
+  padding-left: 2rem;
+  margin-top: 1rem;
+}
+
+.timeline-item {
+  position: relative;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -2.4rem;
+  top: 0.35rem;
+  width: 10px;
+  height: 10px;
+  background: var(--accent-rust);
+  border: 2px solid var(--panel-bg);
+}
+
+.timeline-date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-rust);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.timeline-title {
+  font-family: var(--font-sans);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.timeline-sub {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.timeline-body {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* About */
+
+.about-split {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-portrait img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border: 1px solid var(--border-strong);
+  filter: grayscale(10%);
+}
+
+/* Social Directory */
+
+.social-directory {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background: var(--panel-bg);
+  border: 1px solid var(--border-strong);
+  transition: all 0.2s ease;
+}
+
+.social-link svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--text-primary);
+  transition: fill 0.2s;
+}
+
+.social-link:hover {
+  background: var(--accent-rust);
+  border-color: var(--accent-rust);
+}
+
+.social-link:hover svg {
+  fill: #ffffff;
+}
+
+/* Inputs */
+
+.field-control {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  background: var(--bg-canvas);
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  outline: none;
+  margin-bottom: 1.25rem;
+  transition: border-color 0.2s;
+}
+
+.field-control:focus {
+  border-color: var(--accent-rust);
+  background: #ffffff;
+}
+
+/* Modal */
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 19, 22, 0.6);
+  backdrop-filter: blur(6px);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-card {
+  background: var(--panel-bg);
+  border: 1px solid var(--border-strong);
+  padding: 3rem;
+  max-width: 460px;
+  width: 90%;
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+/* Footer */
+
+footer {
   text-align: center;
+  padding: 4rem 1rem 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  border-top: 1px solid var(--border-light);
+  margin-top: 4rem;
+}
+
+/* Responsive */
+
+@media(max-width: 900px) {
+
+  .hero-layout,
+  .about-split {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .panel-card {
+    padding: 2.25rem;
+  }
 }
 
 </style>
 </head>
+
 <body>
 
-<canvas id="lines-bg"></canvas>
-<div id="particles-js"></div>
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <nav>
-  <h1>Prem Acharya</h1>
+
+  <div class="brand-logo">
+    PREM<span>.ACHARYA</span>
+  </div>
+
   <div class="nav-links">
     <a href="#">Home</a>
-    <a href="#about-me">About Me</a>
-    <a href="#contact">Contacts</a>
-    <a href="Personal Blog/blog.html">Personal Blog</a>
+    <a href="#about-me">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#contact">Contact</a>
+    <a href="Personal Blog/blog.html">Blog</a>
     <a href="Explore/explore.html">Explore</a>
     <a href="cyber_login_toggle.html">Login</a>
   </div>
+
   <div class="hamburger" id="hamburger">
     <div></div>
     <div></div>
     <div></div>
   </div>
+
 </nav>
+
+
+<!-- =========================
+     MOBILE SIDEBAR
+========================= -->
+
 <div class="sidebar" id="sidebar">
+
   <a href="#">Home</a>
-  <a href="#about-me">About Me</a>
-  <a href="#contact">Contacts</a>
-  <a href="Personal Blog/blog.html">Personal Blog</a>
+  <a href="#about-me">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#timeline">Timeline</a>
+  <a href="#contact">Contact</a>
+  <a href="Personal Blog/blog.html">Blog</a>
   <a href="Explore/explore.html">Explore</a>
   <a href="cyber_login_toggle.html">Login</a>
+
 </div>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
 <section class="hero">
 
+  <div class="hero-index-pill">
+    // Technical Index • 2026 Edition
+  </div>
 
-<div><h1>Prem Acharya </h1><h1>
+  <h1>
+    Prem Acharya
+  </h1>
 
-</h1> Student & Research Enthusiast</h1>
-<h2>FUTURE BEGINS HERE</h2><p>Innovation • Engineering • Youth</p><button class="btn" id="openModalBtn">Register Now</button></div>
-</section>
+  <div class="hero-layout">
 
-<!-- ===== About Me Section ===== -->
-<section id="about-me" class="about-section">
-  <div class="about-content">
-    <div class="about-photo">
-      <img src="me.jpg" alt="Prem Acharya – Student and Research Enthusiast from Nepal">
-    </div>
-    <div class="about-text">
-      <h2>About Me</h2>
-      <p>
-        Hello! I’m <b>Prem Acharya</b>,a student and research enthusiast from Nepal with interests in
-physics, AI, web technologies, and creative digital experiences.I'm a passionate web designer, developer, and technology enthusiast from Nepal.
-        I explore creative ways to bring ideas to life through interactive websites, futuristic UI/UX designs, and
-        innovative coding solutions. I enjoy merging aesthetics with functionality to create experiences that are
-        visually striking yet highly usable.
+    <div>
 
-        Beyond coding, I’m deeply curious about sciences and arts, constantly seeking inspiration from literature,
-        music, and the world around me. My journey is about learning, experimenting, and sharing knowledge.
-        Welcome to my digital space where creativity meets technology, and ideas find wings.
+      <p class="hero-body">
+        Computer Engineering student, researcher, and technology enthusiast
+        exploring software systems, artificial intelligence, engineering
+        problems, and interdisciplinary research from Kathmandu, Nepal.
       </p>
+
+      <button class="btn-blueprint" id="openModalBtn">
+        Register Profile
+      </button>
+
     </div>
-  </div>
-</section>
-<!-- ===== CONTACT ME SECTION WITH SVG ICONS ===== -->
-<section class="contact-section">
-  <h2>Contact Me</h2>
-  <p>Connect with me on social media or drop me an email</p>
-  
-  <div id="contact" class="contact-icons">
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/iamacharyaprem" target="_blank" class="contact-icon fb" title="Facebook">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" width="30" height="30">
-        <path d="M22.675 0H1.325C.593 0 0 .593 0 1.326v21.348C0 23.407.593 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.464.098 2.797.142v3.24l-1.918.001c-1.504 0-1.795.716-1.795 1.764v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.407 24 24 23.407 24 22.674V1.326C24 .593 23.407 0 22.675 0z"/>
-      </svg>
-    </a>
-
-    <!-- YouTube -->
-    <a href="https://www.youtube.com/@prem_ach_arya" target="_blank" class="contact-icon yt" title="YouTube">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" width="30" height="30">
-        <path d="M23.498 6.186a2.99 2.99 0 0 0-2.104-2.11C19.646 3.5 12 3.5 12 3.5s-7.645 0-9.393.576a2.992 2.992 0 0 0-2.104 2.11C0 7.936 0 12 0 12s0 4.063.503 5.813a2.988 2.988 0 0 0 2.104 2.11C4.355 20.5 12 20.5 12 20.5s7.645 0 9.394-.576a2.99 2.99 0 0 0 2.104-2.11C24 16.063 24 12 24 12s0-4.063-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-      </svg>
-    </a>
-
-    <!-- LinkedIn -->
-    <a href="https://www.linkedin.com/in/iampremacharya" target="_blank" class="contact-icon li" title="LinkedIn">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" width="30" height="30">
-        <path d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.208 24 24 23.226 24 22.271V1.729C24 .774 23.208 0 22.225 0zM7.082 20.452H3.544V9h3.538v11.452zM5.313 7.643a2.046 2.046 0 1 1 0-4.091 2.046 2.046 0 0 1 0 4.091zM20.452 20.452h-3.538v-5.634c0-1.343-.025-3.07-1.871-3.07-1.872 0-2.158 1.462-2.158 2.974v5.73h-3.538V9h3.397v1.561h.049c.474-.9 1.637-1.848 3.368-1.848 3.598 0 4.264 2.367 4.264 5.451v6.288z"/>
-      </svg>
-    </a>
-
-    <!-- Gmail -->
-    <a href="mailto:iampremacharya@gmail.com" class="contact-icon gm" title="Email">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" width="30" height="30">
-        <path d="M12 13.065L.001 4.5V19.5h23.998V4.5L12 13.065zm0-2.13l11.997-7.935H.003L12 10.935z"/>
-      </svg>
-    </a>
-
-    <!-- GitHub -->
-    <a href="https://github.com/iampremacharya" target="_blank" class="contact-icon gh" title="GitHub">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" width="30" height="30">
-        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.084 1.84 1.234 1.84 1.234 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.304.762-1.604-2.665-.3-5.467-1.333-5.467-5.932 0-1.31.468-2.381 1.235-3.221-.123-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.288-1.552 3.293-1.23 3.293-1.23.654 1.653.242 2.873.12 3.176.77.84 1.233 1.911 1.233 3.221 0 4.61-2.807 5.628-5.479 5.922.43.37.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.287 0 .319.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-      </svg>
-    </a>
-    <!-- Google Scholar -->
-<a href="https://scholar.google.com/citations?user=iampremacharya"
-   target="_blank"
-   class="contact-icon scholar"
-   title="Google Scholar">
-
-  <svg xmlns="http://www.w3.org/2000/svg"
-       viewBox="0 0 24 24"
-       width="30"
-       height="30"
-       fill="#fff">
-
-    <!-- Mortarboard (academic cap) -->
-    <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm-6.5 8.5L12 15l6.5-3.5L12 8l-6.5 3.5z"/>
-
-    <!-- Base -->
-    <path d="M6 16.5v2c0 1.1 2.7 2.5 6 2.5s6-1.4 6-2.5v-2l-6 3-6-3z"/>
-  </svg>
-
-</a>
 
   </div>
-</section>
-<!-- ===== Feedback Form Section ===== -->
-<section class="contact-section">
-  <h2>Feedback</h2>
-  <p>Share your thoughts or suggestions with me</p>
-  
-  <form id="feedbackForm">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" placeholder="Your Feedback" rows="5" required></textarea>
-    <button type="submit" class="btn">Submit Feedback</button>
-    <p id="feedbackMessage"></p>
-  </form>
+
 </section>
 
 
-<footer>© 2026 Prem Acharya</footer>
-<!-- ===== Register Modal ===== -->
-<div id="registerModal" class="modal">
-<div class="modal-content">
-<span class="close-btn" id="closeModal">&times;</span>
-<h2>Register Now</h2>
-<form id="registerForm">
-<input type="text" name="name" placeholder="Full Name" required>
-<input type="email" name="email" placeholder="Email" required>
-<input type="password" name="password" placeholder="Password" required>
-<button type="submit" class="btn">Register</button>
-<p id="registerMessage"></p>
-</form>
+<!-- =========================
+     CORE PROFILE
+========================= -->
+
+<section class="section-wrapper">
+
+  <div class="spec-grid">
+
+    <div class="spec-item">
+
+      <div class="spec-title">
+        Academic Program
+      </div>
+
+      <div class="spec-value">
+        Bachelor in Computer Engineering
+      </div>
+
+    </div>
+
+
+    <div class="spec-item">
+
+      <div class="spec-title">
+        Institution
+      </div>
+
+      <div class="spec-value">
+        IOE Thapathali Campus
+      </div>
+
+    </div>
+
+
+    <div class="spec-item">
+
+      <div class="spec-title">
+        Research Interests
+      </div>
+
+      <div class="spec-value">
+        AI • Engineering • Computational Systems
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT / BIOGRAPHY
+========================= -->
+
+<section id="about-me" class="section-wrapper">
+
+  <div class="panel-card">
+
+    <div class="section-tag">
+      01 / Biography
+    </div>
+
+    <div class="about-split">
+
+      <div class="about-portrait">
+
+        <img
+          src="me.jpg"
+          alt="Prem Acharya"
+        >
+
+      </div>
+
+
+      <div>
+
+        <h2 class="section-heading">
+          Engineering, Research & Building
+        </h2>
+
+        <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.75; margin-bottom: 1.25rem;">
+
+          I am <b>Prem Acharya</b>, a Computer Engineering student at
+          <b>Institute of Engineering, Thapathali Campus</b>, Tribhuvan
+          University. I am interested in understanding how computing,
+          engineering, mathematics, and the physical world can be connected
+          to solve practical problems.
+
+        </p>
+
+
+        <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.75; margin-bottom: 1.25rem;">
+
+          My work spans software development, artificial intelligence,
+          engineering systems, computational methods, and independent
+          research. I enjoy turning ideas into working prototypes,
+          experimenting with unfamiliar technologies, and documenting what
+          I learn along the way.
+
+        </p>
+
+
+        <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.75;">
+
+          Beyond coursework, I actively participate in student-led research,
+          technical communities, and engineering initiatives. My broader goal
+          is to develop the ability to move from a problem or research
+          question to a technically sound solution.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     SKILLS
+========================= -->
+
+<section id="skills" class="section-wrapper">
+
+  <div class="panel-card">
+
+    <div class="section-tag">
+      02 / Technical Stack
+    </div>
+
+    <h2 class="section-heading">
+      Skills & Tools
+    </h2>
+
+
+    <div class="skills-grid">
+
+
+      <!-- Programming -->
+
+      <div class="skill-category">
+
+        <div class="skill-cat-title">
+          Programming
+        </div>
+
+        <ul class="skill-list">
+
+          <li>C</li>
+          <li>C++</li>
+          <li>Python</li>
+          <li>JavaScript</li>
+          <li>HTML5 / CSS3</li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- Web -->
+
+      <div class="skill-category">
+
+        <div class="skill-cat-title">
+          Web & Software
+        </div>
+
+        <ul class="skill-list">
+
+          <li>Frontend Development</li>
+          <li>JavaScript / ES Modules</li>
+          <li>Flask</li>
+          <li>REST APIs</li>
+          <li>Responsive Web Design</li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- Database -->
+
+      <div class="skill-category">
+
+        <div class="skill-cat-title">
+          Data & Backend
+        </div>
+
+        <ul class="skill-list">
+
+          <li>MySQL</li>
+          <li>PostgreSQL</li>
+          <li>Supabase</li>
+          <li>Database Design</li>
+          <li>Authentication Systems</li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- Engineering -->
+
+      <div class="skill-category">
+
+        <div class="skill-cat-title">
+          Engineering & AI
+        </div>
+
+        <ul class="skill-list">
+
+          <li>Artificial Intelligence</li>
+          <li>Machine Learning Concepts</li>
+          <li>Circuit Analysis</li>
+          <li>Engineering Physics</li>
+          <li>Computational Methods</li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- Developer Tools -->
+
+      <div class="skill-category">
+
+        <div class="skill-cat-title">
+          Developer Workflow
+        </div>
+
+        <ul class="skill-list">
+
+          <li>Git / GitHub</li>
+          <li>Linux CLI</li>
+          <li>VS Code</li>
+          <li>LaTeX</li>
+          <li>Vite / ESM</li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- Research -->
+
+      <div class="skill-category">
+
+        <div class="skill-cat-title">
+          Research Practice
+        </div>
+
+        <ul class="skill-list">
+
+          <li>Literature Exploration</li>
+          <li>Technical Documentation</li>
+          <li>Problem Formulation</li>
+          <li>Experimental Prototyping</li>
+          <li>Research Communication</li>
+
+        </ul>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     PROJECTS & RESEARCH
+========================= -->
+
+<section id="projects" class="section-wrapper">
+
+  <div class="panel-card">
+
+    <div class="section-tag">
+      03 / Selected Works
+    </div>
+
+    <h2 class="section-heading">
+      Projects & Research
+    </h2>
+
+
+    <div class="projects-grid">
+
+
+      <!-- PROJECT 1 -->
+
+      <div class="project-card">
+
+        <div>
+
+          <div class="project-meta">
+            // Artificial Intelligence Research
+          </div>
+
+          <h3 class="project-title">
+            Bee Tracking, Tracing & Path Prediction
+          </h3>
+
+          <p class="project-desc">
+
+            Research-oriented project exploring the use of machine learning
+            and computational techniques to track bees, trace their movement,
+            and predict their future position or path from observed movement
+            data.
+
+          </p>
+
+          <div class="project-tags">
+
+            <span class="tag-pill">
+              Machine Learning
+            </span>
+
+            <span class="tag-pill">
+              Python
+            </span>
+
+            <span class="tag-pill">
+              Computer Vision
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="project-actions">
+
+          <a
+            href="Explore/explore.html"
+            class="project-link"
+          >
+            Explore →
+          </a>
+
+          <a
+            href="https://github.com/iampremacharya"
+            target="_blank"
+            class="project-link"
+          >
+            GitHub
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- PROJECT 2 -->
+
+      <div class="project-card">
+
+        <div>
+
+          <div class="project-meta">
+            // Energy & Biotechnology Research
+          </div>
+
+          <h3 class="project-title">
+            Microbial Fuel Cell Research
+          </h3>
+
+          <p class="project-desc">
+
+            Interdisciplinary research exploring microbial fuel cells and
+            their potential to connect biological processes with electricity
+            generation and sustainable energy systems.
+
+          </p>
+
+          <div class="project-tags">
+
+            <span class="tag-pill">
+              MFC
+            </span>
+
+            <span class="tag-pill">
+              Bioenergy
+            </span>
+
+            <span class="tag-pill">
+              Research
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="project-actions">
+
+          <a
+            href="Explore/explore.html"
+            class="project-link"
+          >
+            Explore →
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- PROJECT 3 -->
+
+      <div class="project-card">
+
+        <div>
+
+          <div class="project-meta">
+            // Telecommunications Research
+          </div>
+
+          <h3 class="project-title">
+            5G Technology in Nepal
+          </h3>
+
+          <p class="project-desc">
+
+            Research work examining 5G technology in the context of Nepal,
+            including its technological significance, possible applications,
+            opportunities, and challenges associated with adoption.
+
+          </p>
+
+          <div class="project-tags">
+
+            <span class="tag-pill">
+              5G
+            </span>
+
+            <span class="tag-pill">
+              Networks
+            </span>
+
+            <span class="tag-pill">
+              Nepal
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="project-actions">
+
+          <a
+            href="Explore/explore.html"
+            class="project-link"
+          >
+            Research →
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- PROJECT 4 -->
+
+      <div class="project-card">
+
+        <div>
+
+          <div class="project-meta">
+            // Mechanical Engineering Research
+          </div>
+
+          <h3 class="project-title">
+            Hydraulic Ram Pump
+          </h3>
+
+          <p class="project-desc">
+
+            Research and proposal work focused on hydraulic ram pump
+            technology as a mechanically driven water-lifting solution,
+            including its potential applications in communities where
+            conventional powered pumping can be difficult or expensive.
+
+          </p>
+
+          <div class="project-tags">
+
+            <span class="tag-pill">
+              Hydraulics
+            </span>
+
+            <span class="tag-pill">
+              Engineering
+            </span>
+
+            <span class="tag-pill">
+              NAST Supported
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="project-actions">
+
+          <a
+            href="Explore/explore.html"
+            class="project-link"
+          >
+            Research →
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- PROJECT 5 -->
+
+      <div class="project-card">
+
+        <div>
+
+          <div class="project-meta">
+            // Software Engineering
+          </div>
+
+          <h3 class="project-title">
+            Academic Examination Portal
+          </h3>
+
+          <p class="project-desc">
+
+            Web-based examination system developed around authentication,
+            question delivery, timed examinations, result handling, database
+            integration, and mechanisms designed to discourage disruptive
+            browser behaviour during examinations.
+
+          </p>
+
+          <div class="project-tags">
+
+            <span class="tag-pill">
+              Node.js
+            </span>
+
+            <span class="tag-pill">
+              Express
+            </span>
+
+            <span class="tag-pill">
+              MySQL
+            </span>
+
+            <span class="tag-pill">
+              JavaScript
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="project-actions">
+
+          <a
+            href="https://github.com/iampremacharya"
+            target="_blank"
+            class="project-link"
+          >
+            GitHub
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- PROJECT 6 -->
+
+      <div class="project-card">
+
+        <div>
+
+          <div class="project-meta">
+            // Embedded Systems
+          </div>
+
+          <h3 class="project-title">
+            Temperature-Controlled Fan
+          </h3>
+
+          <p class="project-desc">
+
+            Educational electronics project designed to demonstrate
+            temperature sensing, comparator-based control, transistor
+            switching, and automatic fan operation through a physical
+            cardboard-room prototype.
+
+          </p>
+
+          <div class="project-tags">
+
+            <span class="tag-pill">
+              Electronics
+            </span>
+
+            <span class="tag-pill">
+              Sensors
+            </span>
+
+            <span class="tag-pill">
+              MOSFET
+            </span>
+
+            <span class="tag-pill">
+              EDC
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="project-actions">
+
+          <a
+            href="Explore/explore.html"
+            class="project-link"
+          >
+            Explore →
+          </a>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     ACADEMIC & PROJECT LOG
+========================= -->
+
+<section id="timeline" class="section-wrapper">
+
+  <div class="panel-card">
+
+    <div class="section-tag">
+      04 / Journey
+    </div>
+
+    <h2 class="section-heading">
+      Academic & Project Log
+    </h2>
+
+
+    <div class="timeline-list">
+
+
+      <!-- 2026 PRESENT -->
+
+      <div class="timeline-item">
+
+        <div class="timeline-date">
+          2026 — Present
+        </div>
+
+        <div class="timeline-title">
+          Bachelor in Computer Engineering
+        </div>
+
+        <div class="timeline-sub">
+          Institute of Engineering • Thapathali Campus • Tribhuvan University
+        </div>
+
+        <p class="timeline-body">
+
+          Pursuing undergraduate studies in Computer Engineering with
+          coursework spanning engineering physics, mathematics, programming,
+          electrical and electronic fundamentals, object-oriented programming,
+          and computer engineering foundations.
+
+        </p>
+
+      </div>
+
+
+      <!-- IEEE -->
+
+      <div class="timeline-item">
+
+        <div class="timeline-date">
+          2026 — Present
+        </div>
+
+        <div class="timeline-title">
+          Research & Development Coordinator
+        </div>
+
+        <div class="timeline-sub">
+          IEEE Thapathali Student Branch
+        </div>
+
+        <p class="timeline-body">
+
+          Contributing to student-led research, technical initiatives,
+          knowledge sharing, and research-oriented activities within the
+          IEEE Thapathali community.
+
+        </p>
+
+      </div>
+
+
+      <!-- RESEARCH -->
+
+      <div class="timeline-item">
+
+        <div class="timeline-date">
+          2025 — Present
+        </div>
+
+        <div class="timeline-title">
+          Independent Research & Technical Exploration
+        </div>
+
+        <div class="timeline-sub">
+          Interdisciplinary Engineering & Computing
+        </div>
+
+        <p class="timeline-body">
+
+          Explored projects and research topics including microbial fuel
+          cells, 5G technology in Nepal, hydraulic ram pumps, machine-learning
+          based bee tracking and path prediction, and practical engineering
+          systems.
+
+        </p>
+
+      </div>
+
+
+      <!-- SOFTWARE -->
+
+      <div class="timeline-item">
+
+        <div class="timeline-date">
+          2025 — Present
+        </div>
+
+        <div class="timeline-title">
+          Software & Web Development
+        </div>
+
+        <div class="timeline-sub">
+          Independent Projects
+        </div>
+
+        <p class="timeline-body">
+
+          Built and experimented with websites, database-backed applications,
+          authentication systems, examination portals, interactive interfaces,
+          and developer workflows using technologies including Python,
+          JavaScript, Node.js, Express, MySQL, Supabase, HTML, CSS, Git, and
+          GitHub.
+
+        </p>
+
+      </div>
+
+
+      <!-- SCHOOL -->
+
+      <div class="timeline-item">
+
+        <div class="timeline-date">
+          2025
+        </div>
+
+        <div class="timeline-title">
+          Completed Grade 12 — Science
+        </div>
+
+        <div class="timeline-sub">
+          Kanti Secondary School • Butwal, Nepal
+        </div>
+
+        <p class="timeline-body">
+
+          Completed higher secondary education in the Science stream with a
+          strong foundation in mathematics, physics, computer science, and
+          scientific problem solving.
+
+        </p>
+
+      </div>
+
+
+      <!-- LEADERSHIP -->
+
+      <div class="timeline-item">
+
+        <div class="timeline-date">
+          Earlier Academic Years
+        </div>
+
+        <div class="timeline-title">
+          Student Leadership & Research Activities
+        </div>
+
+        <div class="timeline-sub">
+          Kanti Science Club • Kanti Chess Club • Student Activities
+        </div>
+
+        <p class="timeline-body">
+
+          Participated in science, research, chess, and student-led
+          initiatives, including responsibilities in research coordination,
+          club administration, and academic activities.
+
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact" class="section-wrapper">
+
+  <div class="panel-card">
+
+    <div class="section-tag">
+      05 / Network Directory
+    </div>
+
+    <h2 class="section-heading">
+      Connect
+    </h2>
+
+    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+
+      Access social profiles, code repositories, technical work, and
+      professional updates:
+
+    </p>
+
+
+    <div class="social-directory">
+
+
+      <!-- Facebook -->
+
+      <a
+        href="https://www.facebook.com/iamacharyaprem"
+        target="_blank"
+        class="social-link"
+        title="Facebook"
+      >
+
+        <svg viewBox="0 0 24 24">
+          <path d="M22.675 0H1.325C.593 0 0 .593 0 1.326v21.348C0 23.407.593 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.464.098 2.797.142v3.24l-1.918.001c-1.504 0-1.795.716-1.795 1.764v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.407 24 24 23.407 24 22.674V1.326C24 .593 23.407 0 22.675 0z"/>
+        </svg>
+
+      </a>
+
+
+      <!-- YouTube -->
+
+      <a
+        href="https://www.youtube.com/@prem_ach_arya"
+        target="_blank"
+        class="social-link"
+        title="YouTube"
+      >
+
+        <svg viewBox="0 0 24 24">
+          <path d="M23.498 6.186a2.99 2.99 0 0 0-2.104-2.11C19.646 3.5 12 3.5 12 3.5s-7.645 0-9.393.576a2.992 2.992 0 0 0-2.104 2.11C0 7.936 0 12 0 12s0 4.063.503 5.813a2.988 2.988 0 0 0 2.104 2.11C4.355 20.5 12 20.5 12 20.5s7.645 0 9.394-.576a2.99 2.99 0 0 0 2.104-2.11C24 16.063 24 12 24 12s0-4.063-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
+
+      </a>
+
+
+      <!-- LinkedIn -->
+
+      <a
+        href="https://www.linkedin.com/in/iampremacharya"
+        target="_blank"
+        class="social-link"
+        title="LinkedIn"
+      >
+
+        <svg viewBox="0 0 24 24">
+          <path d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.208 24 24 23.226 24 22.271V1.729C24 .774 23.208 0 22.225 0zM7.082 20.452H3.544V9h3.538v11.452zM5.313 7.643a2.046 2.046 0 1 1 0-4.091 2.046 2.046 0 0 1 0 4.091zM20.452 20.452h-3.538v-5.634c0-1.343-.025-3.07-1.871-3.07-1.872 0-2.158 1.462-2.158 2.974v5.73h-3.538V9h3.397v1.561h.049c.474-.9 1.637-1.848 3.368-1.848 3.598 0 4.264 2.367 4.264 5.451v6.288z"/>
+        </svg>
+
+      </a>
+
+
+      <!-- Email -->
+
+      <a
+        href="mailto:iampremacharya@gmail.com"
+        class="social-link"
+        title="Email"
+      >
+
+        <svg viewBox="0 0 24 24">
+          <path d="M12 13.065L.001 4.5V19.5h23.998V4.5L12 13.065zm0-2.13l11.997-7.935H.003L12 10.935z"/>
+        </svg>
+
+      </a>
+
+
+      <!-- GitHub -->
+
+      <a
+        href="https://github.com/iampremacharya"
+        target="_blank"
+        class="social-link"
+        title="GitHub"
+      >
+
+        <svg viewBox="0 0 24 24">
+          <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.084 1.84 1.234 1.84 1.234 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.304.762-1.604-2.665-.3-5.467-1.333-5.467-5.932 0-1.31.468-2.381 1.235-3.221-.123-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.288-1.552 3.293-1.23 3.293-1.23.654 1.653.242 2.873.12 3.176.77.84 1.233 1.911 1.233 3.221 0 4.61-2.807 5.628-5.479 5.922.43.37.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.287 0 .319.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+        </svg>
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     FEEDBACK
+========================= -->
+
+<section class="section-wrapper">
+
+  <div
+    class="panel-card"
+    style="max-width: 680px;"
+  >
+
+    <div class="section-tag">
+      06 / Communication
+    </div>
+
+    <h2 class="section-heading">
+      Send Feedback
+    </h2>
+
+
+    <form id="feedbackForm">
+
+      <input
+        type="text"
+        name="name"
+        class="field-control"
+        placeholder="Full Name"
+        required
+      >
+
+      <input
+        type="email"
+        name="email"
+        class="field-control"
+        placeholder="Email Address"
+        required
+      >
+
+      <textarea
+        name="message"
+        class="field-control"
+        placeholder="Message Details"
+        rows="4"
+        required
+      ></textarea>
+
+      <button
+        type="submit"
+        class="btn-blueprint"
+        style="width: 100%; justify-content: center;"
+      >
+        Submit Message
+      </button>
+
+      <p
+        id="feedbackMessage"
+        style="margin-top: 12px; font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-rust); text-align: center;"
+      ></p>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     REGISTER MODAL
+========================= -->
+
+<div
+  id="registerModal"
+  class="modal"
+>
+
+  <div class="modal-card">
+
+    <span
+      class="close-modal"
+      id="closeModal"
+    >
+      &times;
+    </span>
+
+
+    <div class="section-tag">
+      Account Setup
+    </div>
+
+    <h3
+      style="font-family: var(--font-sans); font-size: 1.5rem; font-weight: 700; margin-bottom: 1.25rem;"
+    >
+      Register
+    </h3>
+
+
+    <form id="registerForm">
+
+      <input
+        type="text"
+        name="name"
+        class="field-control"
+        placeholder="Full Name"
+        required
+      >
+
+      <input
+        type="email"
+        name="email"
+        class="field-control"
+        placeholder="Email Address"
+        required
+      >
+
+      <input
+        type="password"
+        name="password"
+        class="field-control"
+        placeholder="Password"
+        required
+      >
+
+      <button
+        type="submit"
+        class="btn-blueprint"
+        style="width: 100%; justify-content: center;"
+      >
+        Create Account
+      </button>
+
+      <p
+        id="registerMessage"
+        style="margin-top: 12px; font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-rust); text-align: center;"
+      ></p>
+
+    </form>
+
+  </div>
+
 </div>
-</div>
+
+
+<!-- =========================
+     STRUCTURED DATA
+========================= -->
+
 <script type="application/ld+json">
+
 {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Prem Acharya",
-  "url": "https://acharyaprem.com.np",
-  "image": "https://acharyaprem.com.np/me.jpg",
+  "url": "https://www.acharyaprem.com.np/",
+  "image": "https://www.acharyaprem.com.np/me.jpg",
+
+  "description": "Computer Engineering student, researcher, and technology enthusiast exploring software development, artificial intelligence, engineering systems, and interdisciplinary research.",
+
+  "jobTitle": "Computer Engineering Student & Research Enthusiast",
+
   "sameAs": [
     "https://github.com/iampremacharya",
     "https://www.linkedin.com/in/iampremacharya/",
-    "https://youtube.com/@prem_ach_arya"
-  ],
-  "jobTitle": "Student & Research Enthusiast",
-  "description": "Student researcher exploring physics, AI, science projects, and technology.",
-  "nationality": "Nepali"
+    "https://youtube.com/@prem_ach_arya",
+    "https://www.facebook.com/iamacharyaprem"
+  ]
 }
 
 </script>
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "BreadcrumbList",
- "itemListElement": [{
-   "@type": "ListItem",
-   "position": 1,
-   "name": "Home",
-   "item": "https://acharyaprem.com.np/"
- }]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Prem Acharya",
-  "url": "https://acharyaprem.com.np",
-  "sameAs": [
-    "https://www.linkedin.com/in/iampremacharya",
-    "https://scholar.google.com/citations?user=iampremacharya"
-  ],
-  "jobTitle": "Student & Research Enthusiast",
-  "affiliation": {
-    "@type": "Tribhuvan University, IOE, Thapathali Campus",
-    "name": "Kanti Secondary School"
-  }
-}
-</script>
 
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll("img").forEach(img => {
-    img.setAttribute("loading", "lazy");
-  });
-});
-</script>
 
-<!-- ===== Scripts ===== -->
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-<script>
-/* ===== Moving Lines Background ===== */
-const canvas = document.getElementById('lines-bg');
-const ctx = canvas.getContext('2d');
-let w, h;
-function resize(){ w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; }
-window.addEventListener('resize', resize);
-resize();
-const lines = Array.from({length:40},()=>({x:Math.random()*w, y:Math.random()*h, len:120+Math.random()*120, speed:0.3+Math.random(), angle:Math.random()*Math.PI*2}));
-function draw(){ ctx.clearRect(0,0,w,h); ctx.strokeStyle='rgba(0,234,255,0.35)'; ctx.lineWidth=1.2;
-lines.forEach(l=>{ const x2=l.x+Math.cos(l.angle)*l.len; const y2=l.y+Math.sin(l.angle)*l.len;
-ctx.beginPath(); ctx.moveTo(l.x,l.y); ctx.lineTo(x2,y2); ctx.stroke();
-ctx.fillStyle='rgba(0,234,255,0.8)'; ctx.beginPath(); ctx.arc(x2,y2,2,0,Math.PI*2); ctx.fill();
-l.x+=Math.cos(l.angle)*l.speed; l.y+=Math.sin(l.angle)*l.speed;
-if(l.x>w||l.y>h||l.x<0||l.y<0){ l.x=Math.random()*w; l.y=Math.random()*h; }});
-requestAnimationFrame(draw);}
-draw();
-</script>
-<script>
-particlesJS("particles-js",{particles:{number:{value:80},color:{value:"#00eaff"},shape:{type:"circle"},opacity:{value:0.4},size:{value:2},move:{speed:1}},interactivity:{events:{onhover:{enable:true,mode:"repulse"}}}});
-</script>
+const hamburger =
+  document.getElementById('hamburger');
 
-<script>
-/* ===== About Me Scroll Animation ===== */
-const aboutSection = document.querySelector('.about-section');
+const sidebar =
+  document.getElementById('sidebar');
 
-function revealAboutMe() {
-  const sectionTop = aboutSection.getBoundingClientRect().top;
-  const triggerPoint = window.innerHeight - 100; // when 100px of viewport remaining
-  if(sectionTop < triggerPoint){
-    aboutSection.classList.add('visible');
-  }
-}
-
-window.addEventListener('scroll', revealAboutMe);
-window.addEventListener('load', revealAboutMe);
-
-const hamburger = document.getElementById('hamburger');
-const sidebar = document.getElementById('sidebar');
 
 hamburger.addEventListener('click', () => {
+
   sidebar.classList.toggle('active');
-  // Animate hamburger into X
   hamburger.classList.toggle('active');
+
 });
 
 
-</script>
+/* Close mobile menu after selecting a link */
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const modal = document.getElementById('registerModal');
-  const openBtn = document.getElementById('openModalBtn');
-  const closeBtn = document.getElementById('closeModal');
+document.querySelectorAll('.sidebar a').forEach(link => {
 
-  openBtn.addEventListener('click', () => {
-    modal.style.display = 'flex';
+  link.addEventListener('click', () => {
+
+    sidebar.classList.remove('active');
+    hamburger.classList.remove('active');
+
   });
 
-  closeBtn.addEventListener('click', () => {
+});
+
+
+/* Modal Logic */
+
+const modal =
+  document.getElementById('registerModal');
+
+const openModalBtn =
+  document.getElementById('openModalBtn');
+
+const closeModal =
+  document.getElementById('closeModal');
+
+
+openModalBtn.addEventListener('click', () => {
+
+  modal.style.display = 'flex';
+
+});
+
+
+closeModal.addEventListener('click', () => {
+
+  modal.style.display = 'none';
+
+});
+
+
+window.addEventListener('click', (e) => {
+
+  if (e.target === modal) {
+
     modal.style.display = 'none';
-  });
 
-  window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.style.display = 'none';
-    }
-  });
+  }
+
 });
+
 </script>
 
+
+<!-- =========================
+     SUPABASE
+========================= -->
 
 <script type="module">
-  import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
-  const supabase = createClient(
-    "https://jbbfsyyvwqnmkeqpsxyb.supabase.co",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpiYmZzeXl2d3FubWtlcXBzeHliIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk2ODY3MzYsImV4cCI6MjA4NTI2MjczNn0.01zWZRgFBh4B1_Z94n1ytz8FRXEHbnHrt3-uY77r0Bs"
-  );
+import {
+  createClient
+} from "https://esm.sh/@supabase/supabase-js@2";
 
-  /* ===== REGISTER ===== */
-  const registerForm = document.getElementById('registerForm');
-  const registerMessage = document.getElementById('registerMessage');
 
-  registerForm.addEventListener('submit', async (e) => {
+const supabase = createClient(
+
+  "https://jbbfsyyvwqnmkeqpsxyb.supabase.co",
+
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpiYmZzeXl2d3FubWtlcXBzeHliIiwiaWF0IjoxNzY5Njg2NzMzNiwiZXhwIjoyMDg1MjYyNzM2fQ.01zWZRgFBh4B1_Z94n1ytz8FRXEHbnHrt3-uY77r0Bs"
+
+);
+
+
+/* =========================
+   REGISTER ACTION
+========================= */
+
+const registerForm =
+  document.getElementById('registerForm');
+
+
+registerForm.addEventListener(
+  'submit',
+  async (e) => {
+
     e.preventDefault();
 
-    const name = registerForm.name.value.trim();
-    const email = registerForm.email.value.trim();
-    const password = registerForm.password.value;
+    const registerMessage =
+      document.getElementById('registerMessage');
 
-    registerMessage.textContent = "Registering...";
+    registerMessage.textContent =
+      "Processing...";
 
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
+
+    const {
+      error
+    } = await supabase.auth.signUp({
+
+      email:
+        registerForm.email.value.trim(),
+
+      password:
+        registerForm.password.value,
+
       options: {
-        data: { full_name: name }
+
+        data: {
+
+          full_name:
+            registerForm.name.value.trim()
+
+        }
+
       }
+
     });
 
-    if (error) {
-      registerMessage.textContent = error.message;
-    } else {
-      registerMessage.textContent = "✅ Check your email to confirm!";
+
+    registerMessage.textContent =
+      error
+        ? error.message
+        : "✅ Please check your email to confirm registration!";
+
+
+    if (!error) {
+
       registerForm.reset();
+
     }
-  });
 
-  /* ===== FEEDBACK ===== */
-  const feedbackForm = document.getElementById('feedbackForm');
-  const feedbackMessage = document.getElementById('feedbackMessage');
+  }
 
-  feedbackForm.addEventListener('submit', async (e) => {
+);
+
+
+/* =========================
+   FEEDBACK ACTION
+========================= */
+
+const feedbackForm =
+  document.getElementById('feedbackForm');
+
+
+feedbackForm.addEventListener(
+  'submit',
+  async (e) => {
+
     e.preventDefault();
 
-    const name = feedbackForm.name.value.trim();
-    const email = feedbackForm.email.value.trim();
-    const message = feedbackForm.message.value.trim();
 
-    feedbackMessage.textContent = "Submitting...";
+    const feedbackMessage =
+      document.getElementById('feedbackMessage');
 
-    const { error } = await supabase
+    feedbackMessage.textContent =
+      "Submitting...";
+
+
+    const {
+      error
+    } = await supabase
       .from('feedback')
-      .insert([{ name, email, message }]);
+      .insert([{
 
-    if (error) {
-      feedbackMessage.textContent = error.message;
-    } else {
-      feedbackMessage.textContent = "✅ Thank you for your feedback!";
+        name:
+          feedbackForm.name.value.trim(),
+
+        email:
+          feedbackForm.email.value.trim(),
+
+        message:
+          feedbackForm.message.value.trim()
+
+      }]);
+
+
+    feedbackMessage.textContent =
+      error
+        ? error.message
+        : "✅ Message submitted successfully!";
+
+
+    if (!error) {
+
       feedbackForm.reset();
+
     }
-  });
+
+  }
+
+);
+
 </script>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+  © 2026 PREM ACHARYA. ALL RIGHTS RESERVED.
+
+</footer>
+
 
 </body>
 </html>
